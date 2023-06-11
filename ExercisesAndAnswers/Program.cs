@@ -31,7 +31,7 @@ internal class Program
                 "......\n" +
                 "......\n" +
                 "......";
-        Console.WriteLine(MathWorks.PathFinder2(c));
+        Console.WriteLine(MathWorks.PathFinder2(a));
     }
 }
 }
