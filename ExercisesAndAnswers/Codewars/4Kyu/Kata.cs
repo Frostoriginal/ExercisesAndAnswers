@@ -902,58 +902,58 @@ namespace ExercisesAndAnswers._4Kyu
         // Factorials 4kyu //unsolved
         // https://www.codewars.com/kata/557f6437bf8dcdd135000010
         public static string Factorial(int n) // simple formula to test, numbers are quickly too big to be stored in number types
-        {
+        {                                      // anything bigger than n=12 will overflow int max value 2147483647
             int factorial = 1;
             for (int i = 1; i <= n; i++)
             {
                 factorial *= i;
             }
+          
             return factorial.ToString();
         }
-        public static string Factorial2(int n) // rozwiązanie, jak działa? https://www.geeksforgeeks.org/factorial-large-number/
-                                               //https://iq.opengenus.org/factorial-of-large-numbers/
-        {
-            //int[] result = new int[500];
-            int[] result = new int[n];
-            // Initialize result
-            result[0] = 1;
+        public static string Factorial2(int n) 
+                                               
+        {   
+            if (n < 0) return "";
+
+            //Calculte array size with stirlings formula
+            int computingArraySize = (int)Math.Ceiling(((Math.Log(2 * Math.PI) / 2 + Math.Log(n) / 2 + n * Math.Log(n) - n) / Math.Log(10)));
+            int[] resultArray = new int[computingArraySize];
+            // Initialize result array
+            resultArray[0] = 1;
             int result_size = 1;
 
-            // Apply simple factorial formula
-            // n! = 1 * 2 * 3 * 4...*n
+            //Multiply consecutive numbers starting from 2 to n
             for (int x = 2; x <= n; x++)
-                result_size = multiply(x, result, result_size);
-
-            string resultat = "";
-            // Console.WriteLine("Factorial of "
-            //+ "given number is ");
+            {
+                result_size = multiply(x, resultArray, result_size);
+            }          
+            //parse result from array to string, number by number in reverse order
+            string resultatAsString = "";            
             for (int i = result_size - 1; i >= 0; i--)
-                //Console.Write(result[i]);
-                resultat += result[i].ToString();
+            {     
+                resultatAsString += resultArray[i].ToString();
+            }
+            //string tempTest = String.Join("", resultArray.Reverse()); is it faster?
+            //Console.WriteLine(tempTest);
 
 
-            return $"Factorial of {n} is {resultat} ";
+            return resultatAsString;
         }
 
-        static int multiply(int x, int[] res, int res_size)
-        {
-            int carry = 0; // Initialize carry
-
-            // One by one multiply n with
-            // individual digits of res[]
+        static int multiply(int x, int[] resultArray, int res_size) // multiply x * resultArray elementary school style, return result length
+        {            
+            int carry = 0;
             for (int i = 0; i < res_size; i++)
             {
-                int prod = res[i] * x + carry;
-                res[i] = prod % 10; // Store last digit of
-                                    // 'prod' in res[]
-                carry = prod / 10; // Put rest in carry
+                int localMultiplicationResult = resultArray[i] * x + carry;
+                resultArray[i] = localMultiplicationResult % 10; // Store last digit of localMultiplication result in resultArray, put rest in carry                                    
+                carry = localMultiplicationResult / 10; 
             }
-
-            // Put carry in res and
-            // increase result size
+            // Put carry in res and increase result size
             while (carry != 0)
             {
-                res[res_size] = carry % 10;
+                resultArray[res_size] = carry % 10;
                 carry = carry / 10;
                 res_size++;
             }

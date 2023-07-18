@@ -31,7 +31,33 @@ internal class Program
                 "......\n" +
                 "......\n" +
                 "......";
-        Console.WriteLine(MathWorks.PathFinder2(a));
+      //  Console.WriteLine(MathWorks.PathFinder2(a));
+
+            //Fibonacci memoization
+            Func<int, int> fibonacci = null;
+            fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
+            //Console.WriteLine($"{fibonacci(10)}");
+
+            //int max value = 2147483647
+            Console.WriteLine($"{ExercisesAndAnswers._4Kyu.Kata.Factorial2(147)}");
+            
+
+
+
+        }
+
+        int Fibonacci(int n1)
+        {
+            return Fibonacci(n1, Fibonacci);
+        }
+
+        static int Fibonacci(int n1, Func<int,int> fibonacci)
+        {
+            if (n1 <= 2) return 1;
+            return fibonacci(n1 - 1) + fibonacci(n1 - 2);
+        }
+
+
+
     }
-}
 }
