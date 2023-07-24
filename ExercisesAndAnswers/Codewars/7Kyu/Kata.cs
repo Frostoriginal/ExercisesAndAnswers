@@ -334,7 +334,15 @@ namespace ExercisesAndAnswers._7Kyu
             return $"{array.Max()} {array.Min()}";
         }
 
+        //Is this a triangle
+        //https://www.codewars.com/kata/56606694ec01347ce800001b/csharp
+        public static bool IsTriangle(int a, int b, int c)
+        {
 
+            if (a == 0 || b == 0 || c == 0) return false;
+            if (a + b > c && a + c > b && b + c > a) return true;
+            return false;
+        }
 
 
     }

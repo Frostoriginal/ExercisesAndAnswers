@@ -386,10 +386,40 @@ namespace ExercisesAndAnswers._6Kyu
             return string.Join(" ", decodedWords);
         }
 
+        //Highest scoring word
+        //https://www.codewars.com/kata/57eb8fcdf670e99d9b000272
 
+        public static string High(string s)
+        {
+            List<string> words = s.Split(' ').ToList();
+            string currentHighestScoringWord = "";
+            int currentHighestScore = 0;
+            foreach (string word in words)
+            {
+                int wordHighScore = score(word);
+                if (wordHighScore > currentHighestScore)
+                {
+                    currentHighestScore = wordHighScore;
+                    currentHighestScoringWord = word;
+                }
+            }
 
+            return currentHighestScoringWord;
+        }
 
+        public static int score(string s)
+        {
+            int score = 0;
+            foreach (char character in s)
+            {
+                score += character - 96;
+            }
+            return score;
+        }
 
 
     }
+
+   
+
 }

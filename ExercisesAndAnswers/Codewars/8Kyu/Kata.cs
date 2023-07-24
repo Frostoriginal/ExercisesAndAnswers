@@ -484,7 +484,22 @@ namespace ExercisesAndAnswers._8Kyu
 
         }
 
+        //Transportation on vacation
+        //https://www.codewars.com/kata/568d0dd208ee69389d000016/csharp
+        public static int RentalCarCost(int d)
+        {
+            int discount = 0;
+            if (d >= 3) discount += 20;
+            if (d >= 7) discount += 30;
+            return d * 40 - discount;
 
+        }
+
+        //String repeat
+        //https://www.codewars.com/kata/57a0e5c372292dd76d000d7e
+
+        public static string RepeatStr(int n, string s) => string.Concat(Enumerable.Repeat(s, n));
+       
 
 
     }

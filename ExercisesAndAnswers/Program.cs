@@ -35,12 +35,13 @@ internal class Program
 
             //Fibonacci memoization
             Func<int, int> fibonacci = null;
-            fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
+           // fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
             //Console.WriteLine($"{fibonacci(10)}");
 
             //int max value = 2147483647
-            Console.WriteLine($"{ExercisesAndAnswers._4Kyu.Kata.Factorial2(147)}");
-            
+            Console.WriteLine($"{ExercisesAndAnswers._4Kyu.Kata.Factorial2(100)}");
+
+            Console.WriteLine($"{ExercisesAndAnswers._6Kyu.Kata.High("what time are we climbing up to the volcano")}");
 
 
 

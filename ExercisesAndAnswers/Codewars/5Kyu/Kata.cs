@@ -52,4 +52,156 @@ namespace ExercisesAndAnswers.Codewars._5Kyu
 
 
     }
+    #region Constructing a car
+    //Constructing a car #1 - Engine and Fuel tank
+    //https://www.codewars.com/kata/578b4f9b7c77f535fc00002f/train/csharp
+    public class Car : ICar
+    {
+        public IFuelTankDisplay fuelTankDisplay;
+
+        private IEngine engine;
+
+        private IFuelTank fuelTank;
+
+
+        public Car()
+        {            
+           
+            
+        }
+
+        public Car(double fuelLevel)
+        {
+            
+        }
+               
+
+        bool ICar.EngineIsRunning  => engine.IsRunning;
+
+        public string EngineIsRunning()
+        {
+            if (engine.IsRunning) return "Engine should be running.";
+            return "Engine could not be running.";
+        }
+        public void EngineStart()
+        {
+            engine.Start();
+        }
+
+        public void EngineStop()
+        {
+            engine.Stop();
+        }
+
+        public void Refuel(double liters)
+        {
+           this.fuelTank.Refuel(liters);
+        }
+
+        public void RunningIdle()
+        {
+            
+            throw new NotImplementedException();
+        }
+    }
+
+    public class Engine : IEngine
+    {
+        public bool IsRunning = false;
+
+        bool IEngine.IsRunning => IsRunning;//throw new NotImplementedException();
+
+        public void Consume(double liters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Start()
+        {
+            IsRunning = true;
+        }
+
+        public void Stop()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class FuelTank : IFuelTank
+    {
+        public double FillLevel => FillLevel;
+        
+        public bool IsOnReserve => throw new NotImplementedException();
+
+        public bool IsComplete => throw new NotImplementedException();
+
+        public void Consume(double liters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Refuel(double liters)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class FuelTankDisplay : IFuelTankDisplay
+    {
+        public double FillLevel => throw new NotImplementedException();
+
+        public bool IsOnReserve => throw new NotImplementedException();
+
+        public bool IsComplete => throw new NotImplementedException();
+    }
+
+    #endregion
+
+    #region car interfaces
+    public interface ICar
+    {
+        bool EngineIsRunning { get; }
+
+        void EngineStart();
+
+        void EngineStop();
+
+        void Refuel(double liters);
+
+        void RunningIdle();
+    }
+
+    public interface IEngine
+    {
+        bool IsRunning { get; }
+
+        void Consume(double liters);
+
+        void Start();
+
+        void Stop();
+    }
+
+    public interface IFuelTank
+    {
+        double FillLevel { get; }
+
+        bool IsOnReserve { get; }
+
+        bool IsComplete { get; }
+
+        void Consume(double liters);
+
+        void Refuel(double liters);
+    }
+
+    public interface IFuelTankDisplay
+    {
+        double FillLevel { get; }
+
+        bool IsOnReserve { get; }
+
+        bool IsComplete { get; }
+    }
+    #endregion
 }
