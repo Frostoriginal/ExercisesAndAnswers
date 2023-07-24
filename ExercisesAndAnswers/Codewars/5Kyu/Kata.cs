@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,61 +57,88 @@ namespace ExercisesAndAnswers.Codewars._5Kyu
     #region Constructing a car
     //Constructing a car #1 - Engine and Fuel tank
     //https://www.codewars.com/kata/578b4f9b7c77f535fc00002f/train/csharp
+    //Other Solutions to check: https://www.codewars.com/kata/578b4f9b7c77f535fc00002f/solutions/csharp
+
+    // The default fuel level of a car is 20 liters.
+    // The maximum size of the tank is 60 liters.
+    // Every call of a method from the car correlates to 1 second.
+    // The fuel consumption in running idle is 0.0003 liter/second.
+    // The fuel tank is on reserve, if the level is under 5 liters.
+
+
     public class Car : ICar
     {
         public IFuelTankDisplay fuelTankDisplay;
-
         private IEngine engine;
-
         private IFuelTank fuelTank;
-
-
+                
         public Car()
-        {            
-           
+        {
+            engine = new Engine();
+            fuelTank = new FuelTank();
+            fuelTankDisplay = new FuelTankDisplay();
+            EngineIsRunning = engine.IsRunning;                
             
         }
 
         public Car(double fuelLevel)
         {
-            
+            engine = new Engine();
+            fuelTank = new FuelTank(fuelLevel);       
+            fuelTankDisplay = new FuelTankDisplay(fuelLevel);
+            EngineIsRunning = engine.IsRunning;
         }
-               
 
-        bool ICar.EngineIsRunning  => engine.IsRunning;
+        public bool EngineIsRunning { get; set; }
 
-        public string EngineIsRunning()
-        {
-            if (engine.IsRunning) return "Engine should be running.";
-            return "Engine could not be running.";
-        }
+        bool ICar.EngineIsRunning { get { return EngineIsRunning; } }
+              
         public void EngineStart()
         {
+            if(fuelTank.FillLevel > 0)
+            { 
             engine.Start();
+            EngineIsRunning = engine.IsRunning;
+            }
         }
 
         public void EngineStop()
         {
             engine.Stop();
+            EngineIsRunning = engine.IsRunning;
         }
 
         public void Refuel(double liters)
         {
-           this.fuelTank.Refuel(liters);
+            if (fuelTank.FillLevel < 60 && liters>0) 
+            {        
+            fuelTank.Refuel(liters);
+            fuelTankDisplay = new FuelTankDisplay(fuelTank.FillLevel);
+            }
         }
 
         public void RunningIdle()
         {
-            
-            throw new NotImplementedException();
+            if(fuelTank.FillLevel > 0.0003 && EngineIsRunning)
+            { 
+            fuelTank.Consume(0.0003);
+            fuelTankDisplay = new FuelTankDisplay(fuelTank.FillLevel);
+            }
+            else
+            {
+                EngineStop();
+            }
         }
     }
 
     public class Engine : IEngine
-    {
-        public bool IsRunning = false;
-
-        bool IEngine.IsRunning => IsRunning;//throw new NotImplementedException();
+    {        
+        public bool IsRunning { get; set; }
+        public Engine()
+        {            
+            IsRunning = false;
+        }
+        bool IEngine.IsRunning { get { return IsRunning; } } 
 
         public void Consume(double liters)
         {
@@ -118,41 +147,79 @@ namespace ExercisesAndAnswers.Codewars._5Kyu
 
         public void Start()
         {
-            IsRunning = true;
+            IsRunning=true;
         }
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            IsRunning = false;
         }
     }
 
     public class FuelTank : IFuelTank
     {
-        public double FillLevel => FillLevel;
-        
-        public bool IsOnReserve => throw new NotImplementedException();
+        public double _fillLevel { get; set; }
+        public FuelTank() 
+        {
+            _fillLevel = 20; //default fuel level
+            IsOnReserve = false;
+            IsComplete = false;
+        }
 
-        public bool IsComplete => throw new NotImplementedException();
+        public FuelTank(double fuelLevel)
+        {
+            if(fuelLevel>0) _fillLevel = fuelLevel; 
+            else _fillLevel = 0;
+            if(fuelLevel>60) _fillLevel = 60;
+            if(fuelLevel<5) IsOnReserve = true;
+            if(fuelLevel == 60) IsComplete = true;
+        }
+
+
+        public double FillLevel { get { return _fillLevel; } }
+        
+        public bool IsOnReserve { get; }
+
+        public bool IsComplete { get; }
 
         public void Consume(double liters)
         {
-            throw new NotImplementedException();
+            _fillLevel -= liters;
         }
 
         public void Refuel(double liters)
         {
-            throw new NotImplementedException();
+            _fillLevel += liters;
+            if (_fillLevel > 60) _fillLevel = 60;
+            
         }
     }
 
     public class FuelTankDisplay : IFuelTankDisplay
     {
-        public double FillLevel => throw new NotImplementedException();
+        public double _fillLevel { get; set; }
+        public FuelTankDisplay()
+        {
+            _fillLevel= 20;
+            IsOnReserve = false;
+            IsComplete = false;
+        }
 
-        public bool IsOnReserve => throw new NotImplementedException();
+        public FuelTankDisplay(double fuelLevel)
+        {
+            _fillLevel = fuelLevel;
+            if (fuelLevel > 0) _fillLevel = fuelLevel;
+            else _fillLevel = 0;
+            if (fuelLevel > 60) _fillLevel = 60;
+            if (fuelLevel<5) IsOnReserve= true;
+            if (fuelLevel == 60) IsComplete = true;
+        }
+        
+        public double FillLevel { get { return Math.Round(_fillLevel,2); } }
 
-        public bool IsComplete => throw new NotImplementedException();
+        public bool IsOnReserve { get; }
+
+        public bool IsComplete { get; }
     }
 
     #endregion

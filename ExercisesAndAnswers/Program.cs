@@ -1,4 +1,6 @@
-﻿namespace ExercisesAndAnswers { 
+﻿using ExercisesAndAnswers.Codewars._5Kyu;
+
+namespace ExercisesAndAnswers { 
 internal class Program
 {
     private static void Main(string[] args)
@@ -34,16 +36,16 @@ internal class Program
       //  Console.WriteLine(MathWorks.PathFinder2(a));
 
             //Fibonacci memoization
-            Func<int, int> fibonacci = null;
+           // Func<int, int> fibonacci = null;
            // fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
             //Console.WriteLine($"{fibonacci(10)}");
 
             //int max value = 2147483647
-            Console.WriteLine($"{ExercisesAndAnswers._4Kyu.Kata.Factorial2(100)}");
+         //   Console.WriteLine($"{ExercisesAndAnswers._4Kyu.Kata.Factorial2(100)}");
 
-            Console.WriteLine($"{ExercisesAndAnswers._6Kyu.Kata.High("what time are we climbing up to the volcano")}");
+         //   Console.WriteLine($"{ExercisesAndAnswers._6Kyu.Kata.High("what time are we climbing up to the volcano")}");
 
-
+           
 
         }
 
