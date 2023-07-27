@@ -534,7 +534,111 @@ namespace ExercisesAndAnswers._3Kyu
             return result;
         }
 
+        //Do not loose at tic-tac-toe!
+        //https://www.codewars.com/kata/57bc5e0471f2ff9233000005/train/csharp
 
+        // tactic
+        //1. always go for corner
+        //2. if any corner is marked by other player go for center, if not go for corner
+        // idea - swith to bool array?
+        
+        public static int[] TurnMethod(int[][] board, int player)
+        {
+            //initialize player sides
+            int opponent;
+            if (player == 1) opponent = 2;
+            else opponent = 1;
+            //check for center 
+            if (board[1][1]==0) return new int[] { 1,1};
+
+            #region check if there is need to block other player
+            //check for block
+            //rows
+            for (int i = 0; i < 3; i++)
+            {                
+                string currentRow = $"{board[i][0]}{board[i][1]}{board[i][2]}";
+                Console.WriteLine(currentRow);
+                if (currentRow == $"0{opponent}{opponent}") return new int[] { i, 0 };
+                if (currentRow == $"{opponent}0{opponent}") return new int[] { i, 1 };
+                if (currentRow == $"{opponent}{opponent}0") return new int[] { i, 2 };
+            }
+
+            //columns
+            for (int i = 0; i < 3; i++)
+            {
+                string currentRow = $"{board[0][i]}{board[1][i]}{board[2][i]}";
+                if (currentRow == $"0{opponent}{opponent}") return new int[] { 0, i };
+                if (currentRow == $"{opponent}0{opponent}") return new int[] { 1, i };
+                if (currentRow == $"{opponent}{opponent}0") return new int[] { 2, i };
+            }
+
+            //slanted
+            string backSlash = $"{board[0][0]}{board[1][1]}{board[2][2]}";
+            if (backSlash == $"0{opponent}{opponent}") return new int[] { 0, 0 };
+            if (backSlash == $"{opponent}0{opponent}") return new int[] { 1, 1 };
+            if (backSlash == $"{opponent}{opponent}0") return new int[] { 2, 2 };
+
+            string slash = $"{board[2][0]}{board[1][1]}{board[0][2]}";
+            if (slash == $"0{opponent}{opponent}") return new int[] { 2, 0 };
+            if (slash == $"{opponent}0{opponent}") return new int[] { 1, 1 };
+            if (slash == $"{opponent}{opponent}0") return new int[] { 0, 2 };
+
+            //go for corners
+            if (board[0][0] == 0) return new int[] { 0, 0 };
+            if (board[2][0] == 0) return new int[] { 2, 0 };
+            if (board[0][2] == 0) return new int[] { 0, 2 };
+            if (board[2][2] == 0) return new int[] { 2, 2 };
+
+            //block adjacent
+            //1st row
+            if (board[0][0] == opponent && board[0][1] == 0) return new int[] { 0, 1 };
+            if (board[0][0] == opponent && board[1][0] == 0) return new int[] { 1, 0 };
+
+            if (board[1][0] == opponent && board[0][0] == 0) return new int[] { 0, 0 };
+            if (board[1][0] == opponent && board[2][0] == 0) return new int[] { 2, 0 };
+
+            if (board[2][0] == opponent && board[1][0] == 0) return new int[] { 1, 0 };
+            if (board[2][0] == opponent && board[2][1] == 0) return new int[] { 2, 1 };
+
+            //2nd row
+            if (board[0][1] == opponent && board[0][0] == 0) return new int[] { 0, 0 };
+            if (board[0][1] == opponent && board[0][2] == 0) return new int[] { 0, 2 };
+            if (board[2][1] == opponent && board[2][0] == 0) return new int[] { 2, 0 };
+            if (board[2][1] == opponent && board[2][2] == 0) return new int[] { 2, 2 };
+
+
+            //center
+            if (board[1][1] == opponent && board[0][1] == 0) return new int[] { 0, 1 };
+            if (board[1][1] == opponent && board[1][0] == 0) return new int[] { 1, 0 };
+            if (board[1][1] == opponent && board[2][1] == 0) return new int[] { 2, 1 };
+            if (board[1][1] == opponent && board[1][2] == 0) return new int[] { 1, 2 };
+
+            //3rd row
+            if (board[0][2] == opponent && board[0][1] == 0) return new int[] { 0, 1 };
+            if (board[0][2] == opponent && board[1][2] == 0) return new int[] { 1, 2 };
+
+            if (board[1][2] == opponent && board[0][2] == 0) return new int[] { 0, 2 };
+            if (board[1][2] == opponent && board[2][2] == 0) return new int[] { 2, 2 };
+
+            if (board[2][2] == opponent && board[1][2] == 0) return new int[] { 1, 2 };
+            if (board[2][2] == opponent && board[2][1] == 0) return new int[] { 2, 1 };
+
+
+
+            #endregion
+
+            // just mark the rest
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (board[i][j] == 0) return new int[] { i, j };
+                }
+
+            }
+
+            return null;
+        }
 
 
     }
