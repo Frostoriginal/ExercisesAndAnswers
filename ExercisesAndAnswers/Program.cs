@@ -1,5 +1,6 @@
 ﻿using ExercisesAndAnswers.Codewars._5Kyu;
 using ExercisesAndAnswers.Codewars._5Kyu.Car2;
+using System.Numerics;
 
 namespace ExercisesAndAnswers { 
 internal class Program
@@ -34,41 +35,48 @@ internal class Program
                 "......\n" +
                 "......\n" +
                 "......";
-      //  Console.WriteLine(MathWorks.PathFinder2(a));
+            //  Console.WriteLine(MathWorks.PathFinder2(a));
 
             //Fibonacci memoization
-           // Func<int, int> fibonacci = null;
-           // fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
+            // Func<int, int> fibonacci = null;
+            // fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
             //Console.WriteLine($"{fibonacci(10)}");
 
             //int max value = 2147483647
-         //   Console.WriteLine($"{ExercisesAndAnswers._4Kyu.Kata.Factorial2(100)}");
+            //   Console.WriteLine($"{ExercisesAndAnswers._4Kyu.Kata.Factorial2(100)}");
 
-         //   Console.WriteLine($"{ExercisesAndAnswers._6Kyu.Kata.High("what time are we climbing up to the volcano")}");
+            //   Console.WriteLine($"{ExercisesAndAnswers._6Kyu.Kata.High("what time are we climbing up to the volcano")}");
+            /*
+              Car car = new Car(1,20);
+               car.EngineStart();
+               Enumerable.Range(0, 10).ToList().ForEach(s => car.Accelerate(100));
+               int y = car.drivingInformationDisplay.ActualSpeed; //should be 100
+               //car.FreeWheel();
+               //car.FreeWheel();
+               //car.FreeWheel();
 
-           Car car = new Car(1,20);
-            car.EngineStart();
-            Enumerable.Range(0, 10).ToList().ForEach(s => car.Accelerate(100));
-            int y = car.drivingInformationDisplay.ActualSpeed; //should be 100
-            //car.FreeWheel();
-            //car.FreeWheel();
-            //car.FreeWheel();
-            
-            car.Accelerate(30);
-            car.Accelerate(30);
-            car.Accelerate(30);
-            car.Accelerate(30);
-            car.Accelerate(30);
-            car.Accelerate(30);
-            car.Accelerate(30);
-            car.Accelerate(30);
-            car.Accelerate(30);
-            car.Accelerate(30);
+               car.Accelerate(30);
+               car.Accelerate(30);
+               car.Accelerate(30);
+               car.Accelerate(30);
+               car.Accelerate(30);
+               car.Accelerate(30);
+               car.Accelerate(30);
+               car.Accelerate(30);
+               car.Accelerate(30);
+               car.Accelerate(30);
 
-            y = car.drivingInformationDisplay.ActualSpeed; //should be 97
-            double u = car.fuelTankDisplay.FillLevel;
-            int z = 0;
+               y = car.drivingInformationDisplay.ActualSpeed; //should be 97
+               double u = car.fuelTankDisplay.FillLevel;
+               int z = 0;
 
+               */
+
+            BigInteger n = 10;
+            BigInteger m = 10000000;
+
+             int[] arrayOfInts = { 12,30,21 };
+            Console.WriteLine($"The last digit is {ExercisesAndAnswers._3Kyu.Kata.LastDigit(arrayOfInts)}"); 
 
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -641,5 +642,41 @@ namespace ExercisesAndAnswers._3Kyu
         }
 
 
+        public static int LastDigit(int[] array)
+        {
+            if (array is null || array.Length == 0) return 1;
+            if (array.Length == 1) return 1;
+            BigInteger n2 = BigInteger.Pow(array[array.Length-2],array.Length-1);
+            int baseOfNumber = array[0];
+            int lastNumberOfBase = baseOfNumber.ToString().Last() - 48;
+            Console.WriteLine($"Base number {baseOfNumber}, last number of base {lastNumberOfBase}");
+
+            BigInteger exponential = BigInteger.Pow(array[1], array[2]);
+
+            int x = (int)BigInteger.ModPow(baseOfNumber, exponential, 10);
+
+            Console.WriteLine($"Exponential is {exponential}, last digit = {x}");
+
+            Console.WriteLine($"Current number {n2}");
+            for (int i = array.Length-3; i > 0; i--)
+            {
+                BigInteger a = array[i];
+                n2 = Power(a, n2);
+                Console.WriteLine($"Current number {n2}");
+            }
+            ExercisesAndAnswers._5Kyu.Kata.GetLastDigit(array[0],n2);
+            return 0;
+        }
+        public static BigInteger Power(BigInteger value, BigInteger exponent)
+        {
+            BigInteger originalValue = value;
+            while (exponent-- > 1)
+                value = BigInteger.Multiply(value, originalValue);
+            return value;
+        }
+
+
+
     }
+
 }

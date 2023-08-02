@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExercisesAndAnswers.Codewars._5Kyu
+namespace ExercisesAndAnswers._5Kyu
 {
-    internal class Kata
+    public class Kata
     {
 
         // RGB to hex conversion 5kyu
@@ -52,7 +53,36 @@ namespace ExercisesAndAnswers.Codewars._5Kyu
         }
 
 
+        //Last digit of a large number
+        //https://www.codewars.com/kata/5511b2f550906349a70004e1/train/csharp
+        public static int GetLastDigit(BigInteger n1, BigInteger n2)
+        { //n1^n2
+            // last digit of n1 = 0 => 0
+            // = 1 => 1
+            // = 2 => 2,4,8,6,  2,4,8,6 
+            // = 3 => 3,9,7,1, 3,9,7,1
+            // = 4 => 4,6, 4,6
+            // = 5  => 5
+            // = 6  => 6
+            // = 7  => 7,9,3,1, 7,9,3,1
+            // = 8 => 8,4,2,8 ,8,4,2,8
+            // = 9 => 9,1, 9,1,9,1
+            // = 0 => 0
+
+            if (n1 == 0 && n2 == 0) return 1;
+            if (n1 == 0 && n2 != 0) return 0;
+            if (n1 != 0 && n2 == 0) return 1;
+            int lastDigitInBigNumber = n1.ToString().Last()-48;
+            
+            if (lastDigitInBigNumber == 0 || lastDigitInBigNumber == 1 || lastDigitInBigNumber == 5 || lastDigitInBigNumber == 6 || n2 == 1) return lastDigitInBigNumber;
+            
+            else return (int)BigInteger.ModPow(n1, n2, 10);
+
+            //Console.WriteLine($"integer last number is {lastDigitInBigNumber} ");
+
+            //return -1;
+        }
 
     }
-    
+
 }
