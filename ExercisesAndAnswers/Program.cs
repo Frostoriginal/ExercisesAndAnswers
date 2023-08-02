@@ -91,7 +91,27 @@ internal class Program
             return fibonacci(n1 - 1) + fibonacci(n1 - 2);
         }
 
+        #region job test
+        /*
+        public class project : IProject
+        {
+            public string Name {get; set;}
+            public DateTime Start { get; set; }
+            public DateTime End { get; set; }
+        }
+        public interface IProject
+        {
+            string Name { get; set; }
+            DateTime Start { get; set; }
+            DateTime End { get; set; }
+        }*/
+        #endregion
+
+
+
+
 
 
     }
+
 }
