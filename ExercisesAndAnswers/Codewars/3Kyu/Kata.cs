@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ExercisesAndAnswers._3Kyu
 {
-    internal class Kata
+    public class Kata
     {
         public static void arrayPrinter(int[,] array) //Getlength(0) -> j(rows), (1)- i(columns) array[rows,columns]
         {
@@ -647,25 +649,47 @@ namespace ExercisesAndAnswers._3Kyu
             if (array is null || array.Length == 0) return 1;
             if (array.Length == 1) return 1;
             BigInteger n2 = BigInteger.Pow(array[array.Length-2],array.Length-1);
-            int baseOfNumber = array[0];
-            int lastNumberOfBase = baseOfNumber.ToString().Last() - 48;
-            Console.WriteLine($"Base number {baseOfNumber}, last number of base {lastNumberOfBase}");
-
-            BigInteger exponential = BigInteger.Pow(array[1], array[2]);
-
-            int x = (int)BigInteger.ModPow(baseOfNumber, exponential, 10);
-
-            Console.WriteLine($"Exponential is {exponential}, last digit = {x}");
-
-            Console.WriteLine($"Current number {n2}");
-            for (int i = array.Length-3; i > 0; i--)
+            int baseOfNumber = array[0].ToString().Last() - 48;
+            if (baseOfNumber == 0 || baseOfNumber == 1 || baseOfNumber == 5 || baseOfNumber == 6 || n2 == 1) return baseOfNumber;
+            else
             {
-                BigInteger a = array[i];
-                n2 = Power(a, n2);
-                Console.WriteLine($"Current number {n2}");
+                //int lastNumberOfBase = baseOfNumber.ToString().Last() - 48;
+                Console.WriteLine($"Base number {baseOfNumber}, last number of base");
+
+                BigInteger exponential = 0;
+                exponential = BigInteger.Pow(array[array.Length - 2], array[array.Length - 1]);
+
+                int exponentialModulo = 0;
+
+                if (array.Length > 3)
+                {
+                    for (int i = array.Length - 1; i > 0; i--)
+                    {
+                        BigInteger a = BigInteger.Pow(array[i - 1], array[i]);
+                        n2 = Power(a, n2);
+                        Console.WriteLine($"Current number {n2}");
+                    }
+                }
+                if (exponential > 10)
+                {
+                    string s = exponential.ToString();
+                    int.TryParse(s.Substring(s.Length - 2, 2), out int lastTwoDigits);
+                    exponentialModulo = lastTwoDigits % 4;
+                    if (exponentialModulo == 0) exponentialModulo = 4;
+                }
+                else
+                {
+                    exponentialModulo = (int)exponential % 4;
+                }
+                int result = (int)Math.Pow(baseOfNumber, exponentialModulo);
+                if (result > 9)
+                {
+                    string temp = result.ToString();
+                    result = (int)temp.Last() - 48;
+                }
+
+                return result;
             }
-            ExercisesAndAnswers._5Kyu.Kata.GetLastDigit(array[0],n2);
-            return 0;
         }
         public static BigInteger Power(BigInteger value, BigInteger exponent)
         {

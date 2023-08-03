@@ -1,5 +1,6 @@
 ﻿using ExercisesAndAnswers.Codewars._5Kyu;
 using ExercisesAndAnswers.Codewars._5Kyu.Car2;
+using System;
 using System.Numerics;
 
 namespace ExercisesAndAnswers { 
@@ -72,11 +73,8 @@ internal class Program
 
                */
 
-            BigInteger n = 10;
-            BigInteger m = 10000000;
-
-             int[] arrayOfInts = { 12,30,21 };
-            Console.WriteLine($"The last digit is {ExercisesAndAnswers._3Kyu.Kata.LastDigit(arrayOfInts)}"); 
+            
+            
 
         }
 
