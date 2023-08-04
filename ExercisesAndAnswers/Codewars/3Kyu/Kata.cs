@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
@@ -646,10 +647,57 @@ namespace ExercisesAndAnswers._3Kyu
 
         public static int LastDigit(int[] array)
         {
-            if (array is null || array.Length == 0) return 1;
-            if (array.Length == 1) return 1;
-            BigInteger n2 = BigInteger.Pow(array[array.Length-2],array.Length-1);
+            //1. Corner cases
+            if (array is null || array.Length == 0) return 1;            
+            if (array[0] == 0 && array[1] == 0 && array.Length == 2)  return 1;
+            if (array.Length == 1) return array[0].ToString().Last() - 48;
+
+            //2. Check first number
             int baseOfNumber = array[0].ToString().Last() - 48;
+            if (array.Length == 2 && array[0] != 0 && array[1] == 0) return 1;
+            if (baseOfNumber == 0 || baseOfNumber == 1 || baseOfNumber == 5 || baseOfNumber == 6) return baseOfNumber;
+
+            //3. simplify the array
+            int[] simplified = new int[array.Length];
+            for (int i = array.Length-1; i >= 0; i--)
+            {
+                if(i == 0) simplified[i] = baseOfNumber;
+                else
+                {
+                    simplified[i] = array[i] % 40;
+                    if (simplified[i] == 0 && array[i] != 0) simplified[i] = 40;
+                    if (simplified[i] == 1) simplified[i] = array[i];
+                    
+
+                }
+            }
+            
+            //4. calculate
+            for (int i = simplified.Length-2; i >= 0; i--)
+            {
+                if (i == 0) return (int)BigInteger.ModPow(simplified[0], simplified[1], 10);
+                if (simplified[i] == 0 && simplified[i+1] ==0) simplified[i] = 1;
+                else 
+                { 
+                int simplifiedNumber = (int)BigInteger.ModPow(simplified[i], simplified[i + 1], 40);
+                    Console.WriteLine($"Here is simplified number: {simplifiedNumber}");
+                    if (simplifiedNumber == 0 && simplified[i] != 0) simplifiedNumber = 40;
+                if(simplifiedNumber == 1 && simplified[i+1] == 0) simplified[i] = 1;
+                if(simplifiedNumber != 1 && simplified[i+1] != 0) simplified[i] = simplifiedNumber;
+                if(simplifiedNumber == 1 && i == 1) simplified[i] = 1;
+                }
+
+                Console.WriteLine("Current array");
+                foreach (int num in simplified)
+                {
+                    Console.Write($"{num}, ");
+                }
+            }
+
+            /*
+
+            BigInteger n2 = BigInteger.Pow(array[array.Length-2],array.Length-1);
+            //int baseOfNumber = array[0].ToString().Last() - 48;
             if (baseOfNumber == 0 || baseOfNumber == 1 || baseOfNumber == 5 || baseOfNumber == 6 || n2 == 1) return baseOfNumber;
             else
             {
@@ -687,9 +735,13 @@ namespace ExercisesAndAnswers._3Kyu
                     string temp = result.ToString();
                     result = (int)temp.Last() - 48;
                 }
-
+                int dssd = 0;
                 return result;
             }
+
+            */
+            return 0;
+
         }
         public static BigInteger Power(BigInteger value, BigInteger exponent)
         {
