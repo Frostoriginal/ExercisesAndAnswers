@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExercisesAndAnswers._4Kyu
 {
-    // Validate Sudoku with size `NxN`
+    #region    // Validate Sudoku with size `NxN`
     // https://www.codewars.com/kata/540afbe2dc9f615d5e000425
     public class SudokuAsAClass
     {
@@ -85,11 +85,12 @@ namespace ExercisesAndAnswers._4Kyu
 
         }
     }
+
+    #endregion
     internal class Kata
     {
 
-
-        //Adding big numbers
+        #region        //Adding big numbers
         //https://www.codewars.com/kata/525f4206b73515bffb000b21
 
         public static string AddBigNumbers(string a, string b)  // another solution - using BigIntegers.
@@ -149,8 +150,8 @@ namespace ExercisesAndAnswers._4Kyu
             return result;
 
         }
-
-        //Sudoku checker
+        #endregion
+        #region        //Sudoku checker
         //https://www.codewars.com/kata/540afbe2dc9f615d5e000425
 
         public static bool SudokuCheck(int[][] SudokuArray)
@@ -217,9 +218,8 @@ namespace ExercisesAndAnswers._4Kyu
 
             return realsudoku;
         }
-
-
-        //Next bigger number with the same digits 
+        #endregion
+        #region        //Next bigger number with the same digits 
         //https://www.codewars.com/kata/55983863da40caa2c900004e
         //https://www.geeksforgeeks.org/find-next-greater-number-set-digits/
         public static long nextBiggerNumber(long n)
@@ -313,7 +313,9 @@ namespace ExercisesAndAnswers._4Kyu
             return result;
         }
 
-        // Path Finder #1: can you reach the exit?
+        #endregion
+
+        #region        // Path Finder #1: can you reach the exit?
         // https://www.codewars.com/kata/5765870e190b1472ec0022a2/train/csharp
         public static bool findExit(char[,] mazeArray)
         {
@@ -440,6 +442,8 @@ namespace ExercisesAndAnswers._4Kyu
             }
             return true;
         }
+
+        #endregion
 
         public static void mazeConvertor(string maze)
         {
@@ -750,6 +754,7 @@ namespace ExercisesAndAnswers._4Kyu
                 Console.WriteLine($"moves done: {movesDone}");
                 Console.WriteLine($"Last move = {lastMove}");
                 Console.WriteLine($"Move preferred = {movePreferred}");
+                Console.WriteLine($"Possible ways = {possibleWays}");
 
                 System.Threading.Thread.Sleep(1000);
 
@@ -817,6 +822,7 @@ namespace ExercisesAndAnswers._4Kyu
                     int[] cords = coordinates.Peek();
                     ipoint = cords[0];
                     jpoint = cords[1];
+                    coordinates.Dequeue();
                 }
 
                 //1. lookaround, if w mark as visited, return possible ways
@@ -847,7 +853,7 @@ namespace ExercisesAndAnswers._4Kyu
                     points.Add(new int[] { ipoint, jpoint + 1 });
                 }
                 //3. lookaround through queue
-                coordinates.Dequeue();
+               // coordinates.Dequeue();
 
                 //visualizer
 
@@ -855,7 +861,7 @@ namespace ExercisesAndAnswers._4Kyu
 
                 if (ipoint == mazeArray.GetLength(0) - 1 && jpoint == mazeArray.GetLength(0) - 1) running = false;
 
-                //System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(1000);
                 Console.WriteLine($"Queue size bottom = {coordinates.Count()}");
 
             }
@@ -899,7 +905,8 @@ namespace ExercisesAndAnswers._4Kyu
             return directions;
         }
 
-        // Factorials 4kyu //unsolved
+
+        #region         // Factorials 4kyu
         // https://www.codewars.com/kata/557f6437bf8dcdd135000010
         public static string Factorial(int n) // simple formula to test, numbers are quickly too big to be stored in number types
         {                                      // anything bigger than n=12 will overflow int max value 2147483647
@@ -960,7 +967,9 @@ namespace ExercisesAndAnswers._4Kyu
             return res_size;
         }
 
-        //Human Readable format 4 kyu
+        #endregion
+
+        #region        //Human Readable format 4 kyu
         //https://www.codewars.com/kata/52742f58faf5485cae000b9a
         public static string secondsToDate(int seconds)
         {
@@ -1025,9 +1034,9 @@ namespace ExercisesAndAnswers._4Kyu
             return result;
         }
 
+        #endregion
 
-
-        //Roman Numerals Helper 4kyu
+        #region        //Roman Numerals Helper 4kyu
         //https://www.codewars.com/kata/51b66044bce5799a7f000003/solutions/csharp
         public static string ArabicToRoman(int n)
         {
@@ -1186,7 +1195,9 @@ namespace ExercisesAndAnswers._4Kyu
 
         }
 
-        //Decode the morse code - advanced 4kyu
+        #endregion
+
+        #region        //Decode the morse code - advanced 4kyu
         //https://www.codewars.com/kata/54b72c16cd7f5154e9000457
         public static string morseDecoderFromImpulses(string bits) //decodeBits take 0 and 1, return dots and dashes          
         {
@@ -1231,10 +1242,10 @@ namespace ExercisesAndAnswers._4Kyu
             return bits;
         }
 
-
+        #endregion
 
 
     }
 
-    
+
 }
