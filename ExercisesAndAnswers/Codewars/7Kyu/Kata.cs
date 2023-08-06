@@ -344,6 +344,11 @@ namespace ExercisesAndAnswers._7Kyu
             return false;
         }
 
+        //The highest profit wins!
+        //https://www.codewars.com/kata/559590633066759614000063/solutions/csharp
+        public static int[] minMax(int[] lst) => new int[] { lst.Min(), lst.Max()};
+    
 
-    }
+
+}
 }

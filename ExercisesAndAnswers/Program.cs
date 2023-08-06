@@ -39,7 +39,7 @@ internal class Program
                     "......";
              //Console.WriteLine(MathWorks.PathFinder2(a));
              // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.PathFinder2(a));
-            Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.PathGraph(c));
+           // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.PathGraph(c));
 
 
             //Fibonacci memoization
@@ -47,7 +47,8 @@ internal class Program
             // fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
             //Console.WriteLine($"{fibonacci(10)}");
 
-           
+            int[] abc = ExercisesAndAnswers._7Kyu.Kata.minMax(new int[] { 1, 2, 5, -1, 12, 20 });
+            int bxc = 0;
         }
 
         int Fibonacci(int n1)
