@@ -3,6 +3,7 @@ using ExercisesAndAnswers.Codewars._5Kyu;
 using ExercisesAndAnswers.Codewars._5Kyu.Car2;
 using System;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
 namespace ExercisesAndAnswers { 
@@ -48,14 +49,13 @@ internal class Program
             // fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
             //Console.WriteLine($"{fibonacci(10)}");
             //Console.WriteLine(IsValidWalk(new string[] { "w", "e", "w", "e", "w", "e", "w", "e", "w", "e", "w", "e" }));
-            string toOrder = "is2 Thi1s T4est 3a"; //-- > "Thi1s is2 3a T4est"
-            string test = "3a";
-            int.TryParse(test, out int u);
-            int j = 0;
+            
         }
 
-     //   public static string OrderAll(string s) => string.Join(",", s.Split(" ").OrderBy(s.Select(x=>x)));
-            
+        //   public static string OrderAll(string s) => string.Join(",", s.Split(" ").OrderBy(s.Select(x=>x)));
+
+        
+
 
         public static string TheLongest(List<string> strings)
         {

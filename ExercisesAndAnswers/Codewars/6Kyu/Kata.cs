@@ -493,8 +493,23 @@ namespace ExercisesAndAnswers._6Kyu
             return true;
         }
 
+        //Your order, please
+        //https://www.codewars.com/kata/55c45be3b2079eccff00010f/train/csharp
+        public static string Order(string words)
+        {
+            Dictionary<int, string> dictionary = new Dictionary<int, string>();
+            foreach (string item in words.Split(" "))
+            {
+                int.TryParse(Regex.Match(item, @"\d+").Value, out int key);
+                dictionary.Add(key, item);
+            }
+            return string.Join(" ", dictionary.OrderBy(x => x.Key).Select(x => x.Value).ToArray());
+        }
 
-
+        //with linq
+        public static string Order2(string words) => string.Join(" ", words.Split().OrderBy(w => w.SingleOrDefault(char.IsDigit)));
+        //with ling & regex
+        public static string Order3(string words) => string.Join(" ",words.Split(' ').OrderBy(s => Regex.Match(s,@"\d+").Value));
     }
 
 
