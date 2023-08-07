@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ExercisesAndAnswers._6Kyu
@@ -417,9 +418,85 @@ namespace ExercisesAndAnswers._6Kyu
             return score;
         }
 
+        //Consecutive strings
+        //https://www.codewars.com/kata/56a5d994ac971f1ac500003e/train/csharp
+        public static string LongestConsec(string[] strarr, int k)
+        {
+            if (k == 0) return "";
+            if (k == 1) return strarr.Aggregate("", (max, cur) => max.Length > cur.Length ? max : cur);
+            //List<string> concatenated = new List<string>();
+            string currentLongest = "";
+            for (int i = 0; i <= strarr.Length - k; i++)
+            {
+                string result = "";
+                for (int j = 0; j < k; j++)
+                {
+                    result += strarr[i + j];
+                }
+                //concatenated.Add(result);
+                if (result.Length > currentLongest.Length) currentLongest = result;
+            }
+
+            
+
+
+            return currentLongest;//concatenated.Aggregate("", (max, cur) => max.Length > cur.Length ? max : cur);
+        }
+
+        //Count the smiley faces
+        //https://www.codewars.com/kata/583203e6eb35d7980400002a/solutions/csharp
+        public static int countSmileys(string[] smileys)
+        {
+            int count = 0;
+            Regex regex = new Regex(@"^([:|;])([-|~)])?([\)|D])$");
+            foreach (string item in smileys)
+            {
+                Match match = regex.Match(item);
+                if (match.Success) count++;
+            }
+            return count;
+
+        }
+        public static int CountSmileys2(string[] smileys) =>  smileys.Count(s => Regex.IsMatch(s, @"^[:;]{1}[~-]{0,1}[\)D]{1}$"));
+
+        //Two sum
+        //https://www.codewars.com/kata/52c31f8e6605bcc646000082/solutions/csharp
+
+        public static int[] twoSum(int[] numbers, int target)
+        {
+            for (int i = 0; i < numbers.Length - 1; i++)
+            {
+                for (int j = i + 1; j < numbers.Length; j++)
+                {
+                    if (numbers[i] + numbers[j] == target) return new int[] { i, j };
+                }
+            }
+            return new int[0];
+        }
+
+        //Take a ten minutes walk
+        //https://www.codewars.com/kata/54da539698b8a2ad76000228/train/csharp
+        public static bool IsValidWalk(string[] walk)
+        {
+            if (walk.Length != 10) return false;
+
+            int horizontal = 0;
+            int vertical = 0;
+            for (int i = 0; i < walk.Length; i++)
+            {
+                if (walk[i] == "n") horizontal++;
+                if (walk[i] == "s") horizontal--;
+                if (walk[i] == "w") vertical++;
+                if (walk[i] == "e") vertical--;
+            }
+            if (horizontal != 0 || vertical != 0) return false;
+            return true;
+        }
+
+
 
     }
 
-   
+
 
 }

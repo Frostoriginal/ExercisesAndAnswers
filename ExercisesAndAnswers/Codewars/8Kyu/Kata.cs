@@ -499,7 +499,37 @@ namespace ExercisesAndAnswers._8Kyu
         //https://www.codewars.com/kata/57a0e5c372292dd76d000d7e
 
         public static string RepeatStr(int n, string s) => string.Concat(Enumerable.Repeat(s, n));
-       
+
+        //Fake binary
+        //https://www.codewars.com/kata/57eae65a4321032ce000002d/train/csharp
+
+        public static string FakeBin(string x)
+        { string result = "";
+            for (int i = 0; i < x.Length; i++)
+            {
+                int.TryParse(x[i].ToString(), out int number);
+                if (number < 5) result += "0";
+                else result += "1";
+            }
+            return result;
+        }
+
+        //Feast of many beasts
+        //https://www.codewars.com/kata/5aa736a455f906981800360d/train/csharp
+        public static bool Feast(string beast, string dish) => (beast[0] == dish[0] && beast[beast.Length - 1] == dish[dish.Length - 1]);
+
+        public static bool Feast2(string beast, string dish)
+        {
+            return beast[0] == dish[0] && beast[^1] == dish[^1];
+        }
+
+        //Remove exclamation marks
+        //https://www.codewars.com/kata/57a0885cbb9944e24c00008e/train/csharp
+        public static string RemoveExclamationMarks(string s) => new string(s.ToCharArray().Where(x => x != '?').ToArray());
+
+        //Volume of a cuboid
+        //https://www.codewars.com/kata/58261acb22be6e2ed800003a/train/csharp
+        public static double GetVolumeOfCuboid(double length, double width, double height) => length * width * height;
 
 
     }

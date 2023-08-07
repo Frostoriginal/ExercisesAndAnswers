@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -347,8 +348,9 @@ namespace ExercisesAndAnswers._7Kyu
         //The highest profit wins!
         //https://www.codewars.com/kata/559590633066759614000063/solutions/csharp
         public static int[] minMax(int[] lst) => new int[] { lst.Min(), lst.Max()};
-    
+
+        
 
 
-}
+    }
 }

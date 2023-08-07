@@ -3,6 +3,7 @@ using ExercisesAndAnswers.Codewars._5Kyu;
 using ExercisesAndAnswers.Codewars._5Kyu.Car2;
 using System;
 using System.Numerics;
+using System.Text.RegularExpressions;
 
 namespace ExercisesAndAnswers { 
 internal class Program
@@ -37,18 +38,39 @@ internal class Program
                     "......\n" +
                     "......\n" +
                     "......";
-             //Console.WriteLine(MathWorks.PathFinder2(a));
-             // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.PathFinder2(a));
-           // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.PathGraph(c));
+            //Console.WriteLine(MathWorks.PathFinder2(a));
+            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.PathFinder2(a));
+            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.PathGraph(c));
 
 
             //Fibonacci memoization
             // Func<int, int> fibonacci = null;
             // fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
             //Console.WriteLine($"{fibonacci(10)}");
+            //Console.WriteLine(IsValidWalk(new string[] { "w", "e", "w", "e", "w", "e", "w", "e", "w", "e", "w", "e" }));
+            string toOrder = "is2 Thi1s T4est 3a"; //-- > "Thi1s is2 3a T4est"
+            string test = "3a";
+            int.TryParse(test, out int u);
+            int j = 0;
+        }
 
-            int[] abc = ExercisesAndAnswers._7Kyu.Kata.minMax(new int[] { 1, 2, 5, -1, 12, 20 });
-            int bxc = 0;
+     //   public static string OrderAll(string s) => string.Join(",", s.Split(" ").OrderBy(s.Select(x=>x)));
+            
+
+        public static string TheLongest(List<string> strings)
+        {
+            List<string> concatenated = new List<string>();
+            for (int i = 0; i < strings.Count-1; i++)
+            {
+                concatenated.Add(string.Join("", strings[i], strings[i+1]));
+            }
+
+            foreach (var item in concatenated)
+            {
+                Console.WriteLine(item);
+            }
+
+            return concatenated.Aggregate("", (max, cur) => max.Length > cur.Length ? max : cur);
         }
 
         int Fibonacci(int n1)
