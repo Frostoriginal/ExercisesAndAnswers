@@ -510,6 +510,31 @@ namespace ExercisesAndAnswers._6Kyu
         public static string Order2(string words) => string.Join(" ", words.Split().OrderBy(w => w.SingleOrDefault(char.IsDigit)));
         //with ling & regex
         public static string Order3(string words) => string.Join(" ",words.Split(' ').OrderBy(s => Regex.Match(s,@"\d+").Value));
+
+        //Unique in order
+        //https://www.codewars.com/kata/54e6533c92449cc251001667/train/csharp
+        public static IEnumerable<T> UniqueInOrder<T>(IEnumerable<T> iterable)
+        {
+            List<T> result = new();            
+            string last = "";
+            string current = "";
+            
+            foreach (var item in iterable)
+            { 
+                current = item.ToString();                                
+                if (last != current)
+                {
+                    result.Add(item);
+                    last = current;
+                }
+
+            }           
+            return result;
+        }
+
+
+
+
     }
 
 

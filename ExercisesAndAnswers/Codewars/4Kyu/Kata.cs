@@ -1244,6 +1244,139 @@ namespace ExercisesAndAnswers._4Kyu
 
         #endregion
 
+        #region //Range Extraction
+        //https://www.codewars.com/kata/51ba717bb08c1cd60f00002f/train/csharp
+        public static string Extract(int[] args)
+        { 
+        if (args.Length < 3) return string.Join(",", args);
+            
+        List<string> result = new List<string>();
+            
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (i + 2 < args.Length)
+                {
+                    if (args[i] + 1 == args[i + 1] && args[i + 1] + 1 == args[i + 2])
+                    {
+                        int rangeStart = args[i];
+                        int rangeEnd = 0;
+                        bool isItRange = true;
+                        while (isItRange)
+                        {
+                            if (i + 1 < args.Length)
+                            {
+                                if (args[i] + 1 == args[i + 1])
+                                {
+                                    rangeEnd = args[i + 1];
+                                    i++;
+                                }
+                                else
+                                {
+                                    isItRange = false;
+                                }
+                            }
+                            else
+                            {
+                                isItRange = false;
+                            }
+                        }
+                        result.Add($"{rangeStart}-{rangeEnd}");
+                    }
+                    else
+                    {
+                        result.Add(args[i].ToString());
+                    }
+                }
+                else
+                {
+                    result.Add(args[i].ToString());
+                }
+            }
+
+            return string.Join(",", result);
+        }
+
+        #endregion
+
+        //Sum strings as numbers    
+        //https://www.codewars.com/kata/5324945e2ece5e1f32000370
+
+        public static string sumStrings(string a, string b)
+        {
+            string result = "";
+            int arrayLength = 0;
+           
+
+            //check if both numbers are the same lenght, if not check which one is longer to determine array length and make both same size.
+            if (a.Length != b.Length)
+            {
+                if (a.Length > b.Length)
+                {
+                    arrayLength = a.Length;
+                    b = b.PadLeft(a.Length, '0');                   
+                }
+                else
+                {
+                    arrayLength = b.Length;
+                   a = a.PadLeft(b.Length, '0');
+                }
+            }
+            else arrayLength = a.Length;
+
+            
+
+            //add the numbers
+            int localSum = 0;
+            int carry = 0;
+            for (int i = arrayLength-1; i >= 0; i--)
+            {
+
+                int.TryParse(a[i].ToString(), out int aInt);
+                int.TryParse(b[i].ToString(), out int bInt);
+                localSum = aInt + bInt + carry;
+                if (localSum > 9)
+                {
+                    carry = 1;
+                    localSum -= 10;
+                }
+                else carry = 0;
+                result += localSum;
+
+            }
+            if (carry != 0) result += carry;
+            return string.Join("", result.TrimEnd('0').Reverse());
+        }
+
+        //Block sequence unsolved!
+        //https://www.codewars.com/kata/5e1ab1b9fe268c0033680e5f/train/csharp
+        public static int solve(long n)
+        {
+            //equation for nth number of xth element, y=n,
+            // y = 1/2 * (x+1/2)^2 -1/8
+            // x = Sqrt(2y+1/4) - 1/2
+            //algorithm - find xth block, find number-remainder?
+
+            double nthBlock = Math.Sqrt(2*n+1/4)-1/2;
+            long xxx = (long)Math.Floor(nthBlock);
+            Console.WriteLine(xxx);
+            int i = 1;
+            string currString = "";
+            string currNumber = "";
+            while (currString.Length < n)
+            {
+                currNumber += i.ToString();
+                currString += currNumber;
+                i++;
+                Console.WriteLine($"input n:{n} \n current n: {currString.Length}");
+            }
+            Console.WriteLine(currString);
+            return 0;
+        }
+
+
+
+
+
 
     }
 
