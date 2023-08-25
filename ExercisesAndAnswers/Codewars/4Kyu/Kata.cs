@@ -1355,19 +1355,47 @@ namespace ExercisesAndAnswers._4Kyu
             // y = 1/2 * (x+1/2)^2 -1/8
             // x = Sqrt(2y+1/4) - 1/2
             //algorithm - find xth block, find number-remainder?
-
+            /*
             double nthBlock = Math.Sqrt(2*n+1/4)-1/2;
             long xxx = (long)Math.Floor(nthBlock);
-            Console.WriteLine(xxx);
+            long nthRounded = (long)Math.Round(nthBlock);
+            Console.WriteLine($"nthBlock: {nthBlock}, floored: {xxx}, round: {nthRounded}");
+            
+            int segment = 4;
+
+           // 0.477855 x ^ 2 + 0.502098 x + 0.187879(quadratic)
+            double z = 0.477855 * Math.Pow(segment,2) + 0.502098 * segment + 0.187879;
+
+
+            Console.WriteLine($"Segment: {segment}, calculated: {z}");
+            segment = 5;
+            z = Math.Round(Math.Pow((segment), 2) / 2 + segment / 2);
+            Console.WriteLine($"Segment: {segment}, calculated: {z}");
+            segment = 6;
+            z = Math.Round(Math.Pow((segment), 2) / 2 + segment / 2);
+            Console.WriteLine($"Segment: {segment}, calculated: {z}");
+            segment = 7;
+            z = Math.Round(Math.Pow((segment), 2) / 2 + segment / 2);
+            Console.WriteLine($"Segment: {segment}, calculated: {z}");
+            segment = 8;
+            z = Math.Round(Math.Pow((segment), 2) / 2 + segment / 2);
+            Console.WriteLine($"Segment: {segment}, calculated: {z}");
+            */
             int i = 1;
+            
             string currString = "";
             string currNumber = "";
-            while (currString.Length < n)
+            int currLength = 0;
+            bool running = true;
+            while (running)
             {
                 currNumber += i.ToString();
+                int currStep = currNumber.ToString().Length;
+                currLength += currStep;
                 currString += currNumber;
                 i++;
-                Console.WriteLine($"input n:{n} \n current n: {currString.Length}");
+                Console.WriteLine($"input n:{n} \ncurrent n: {currLength} \ncurrent step: {currStep}");
+                if (currLength > n) running = false;
             }
             Console.WriteLine(currString);
             return 0;

@@ -64,8 +64,30 @@ internal class Program
 
             // returns "-10--8,-6,-3-1,3-5,7-11,14,15,17-20"
 
-            ExercisesAndAnswers._4Kyu.Kata.solve(1000000000000000000);
-            
+
+            /*
+            int length = 1;
+
+            for (int i = 1; i < 10; i++)
+            {
+                length += i + 1;
+                Console.WriteLine($"current Length: {length}");
+
+            }
+            Console.WriteLine("");
+            int j = 1;
+            for (int i = 10; i < 100; i++)
+            {
+                length += i + j;
+                Console.WriteLine($"current Length: {length}, i:{i}, imod: {i % 10 + 1}, j: {j}");
+                j++;
+                
+
+            }
+            */
+
+             ExercisesAndAnswers._4Kyu.Kata.solve(10000000000);
+
 
 
 
