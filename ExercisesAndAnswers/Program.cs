@@ -62,48 +62,18 @@ internal class Program
 
             //   Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.sumStrings("00103", "08567"));
 
-            int[] numbers = { 1, 2, 3, 4, 5 };
-            int sumOfSquares = numbers.Aggregate((acc, num) => acc + num*num); // sum of squares
-
-           
-
-            Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.decompose2(3));
-         //  Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.decompose(13)); 
-
-            // returns "-10--8,-6,-3-1,3-5,7-11,14,15,17-20"
 
 
-            /*
-            int length = 1;
 
-            for (int i = 1; i < 10; i++)
-            {
-                length += i + 1;
-                Console.WriteLine($"current Length: {length}");
-
-            }
-            Console.WriteLine("");
-            int j = 1;
-            for (int i = 10; i < 100; i++)
-            {
-                length += i + j;
-                Console.WriteLine($"current Length: {length}, i:{i}, imod: {i % 10 + 1}, j: {j}");
-                j++;
-                
-
-            }
-            */
-
-           //  ExercisesAndAnswers._4Kyu.Kata.solve(10000000000);
-
-
+            Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(80402, 0.4657497334675821));
+            ;
 
 
 
 
         }
 
-        //   public static string OrderAll(string s) => string.Join(",", s.Split(" ").OrderBy(s.Select(x=>x)));
+       
 
 
 

@@ -1493,8 +1493,39 @@ namespace ExercisesAndAnswers._4Kyu
             return 0;
         }
 
+        //Grazin donkey
+        // https://www.codewars.com/kata/5b5ce2176d0db7331f0000c0/train/csharp
+        public static int GetRopeLength(int fieldDiameter, double eatenRatio)
+        {
+            if (eatenRatio == 1) return fieldDiameter;
+            if (eatenRatio == 0 || fieldDiameter == 0) return 0;
 
+            double R1 = fieldDiameter / 2;
+           
+            double maxFeedingArea = (Math.PI * Math.Pow(R1, 2)) * eatenRatio;
+            
+            double R2 = 0; 
+            double alpha, beta, a1, a2;           
+            double ans = 0;
+            bool running = true;
 
+            while (running)
+            {
+                R2++;
+                alpha = Math.Acos((2*Math.Pow(fieldDiameter / 2, 2) - R2 * R2) / (2 * Math.Pow(fieldDiameter / 2, 2))) * 2;
+                beta = Math.Acos((R2 * R2) / (2 * R2 * fieldDiameter / 2)) * 2;
+                a1 = 0.5 * beta * R2 * R2 - 0.5 * R2 * R2 * Math.Sin(beta);
+                a2 = 0.5 * alpha * Math.Pow(fieldDiameter / 2, 2) - 0.5 * Math.Pow(fieldDiameter / 2, 2) * Math.Sin(alpha);
+                ans = a1 + a2;
+                if (ans > maxFeedingArea)
+                {
+                    int x = 0;   
+                    running = false; 
+                }
+            }
+                       
+            return (int)R2-1; 
+        }
 
 
 
