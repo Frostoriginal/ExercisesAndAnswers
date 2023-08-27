@@ -54,13 +54,21 @@ internal class Program
             // ExercisesAndAnswers._6Kyu.Kata.UniqueInOrder("AAAABBBCCDAABBB");
 
             // ExercisesAndAnswers._6Kyu.Kata.UniqueInOrder(new int[] { 1, 2, 2, 3, 3 });
-           // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.Extract(new int[] {1,2,3}));
+            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.Extract(new int[] {1,2,3}));
 
-           // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.Extract(new int[] { -10, -9, -8, -6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20,22,23,25 }));
+            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.Extract(new int[] { -10, -9, -8, -6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20,22,23,25 }));
 
-           // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.Extract(new[] { -6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20 }));
+            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.Extract(new[] { -6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20 }));
 
-            Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.sumStrings("00103", "08567"));
+            //   Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.sumStrings("00103", "08567"));
+
+            int[] numbers = { 1, 2, 3, 4, 5 };
+            int sumOfSquares = numbers.Aggregate((acc, num) => acc + num*num); // sum of squares
+
+           
+
+            Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.decompose2(3));
+         //  Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.decompose(13)); 
 
             // returns "-10--8,-6,-3-1,3-5,7-11,14,15,17-20"
 
@@ -86,7 +94,7 @@ internal class Program
             }
             */
 
-             ExercisesAndAnswers._4Kyu.Kata.solve(10000000000);
+           //  ExercisesAndAnswers._4Kyu.Kata.solve(10000000000);
 
 
 

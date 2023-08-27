@@ -87,7 +87,7 @@ namespace ExercisesAndAnswers._4Kyu
     }
 
     #endregion
-    internal class Kata
+    public class Kata
     {
 
         #region        //Adding big numbers
@@ -1298,7 +1298,7 @@ namespace ExercisesAndAnswers._4Kyu
 
         #endregion
 
-        //Sum strings as numbers    
+        #region //Sum strings as numbers    
         //https://www.codewars.com/kata/5324945e2ece5e1f32000370
 
         public static string sumStrings(string a, string b)
@@ -1346,6 +1346,98 @@ namespace ExercisesAndAnswers._4Kyu
             if (carry != 0) result += carry;
             return string.Join("", result.TrimEnd('0').Reverse());
         }
+
+        #endregion
+
+        #region //Square into squares
+        //https://www.codewars.com/kata/54eb33e5bc1a25440d000891
+
+        public static string decompose(long n)
+        {
+            Stack<long> squares = new();
+            Stack<long> currentSums = new();
+            List<string> alreadyCalculated = new();
+            bool deadEnd = false;            
+            long nSquared = (long)Math.Pow(n, 2);
+            long currentSum = nSquared;
+            squares.Push(n - 1);
+            currentSums.Push(currentSum);
+            squareFactorsRecursive(squares, currentSums);
+            alreadyCalculated.Add(string.Join(" ,", squares));                       
+
+            bool secondRun = true;
+            while (secondRun)
+            {
+                long squareSum = 0;
+                foreach (long item in squares)
+                {
+                    squareSum += (long)Math.Pow(item, 2);
+                }
+                if (squareSum == nSquared)
+                {                   
+                    return string.Join(" ", squares);
+                }                               
+
+                if (deadEnd)
+                {
+                    deadEnd = false; 
+                    if (alreadyCalculated.Contains(string.Join(" ,", squares)))
+                    {
+                        squares.Pop();
+                        currentSums.Pop();
+                        if (squares.Count == 0) return null;
+                    }
+                    int temp = (int)squares.Peek() - 1;
+                    if (temp > 0)
+                    {
+                        squares.Pop();
+                        squares.Push(temp);
+                    }
+                    else
+                    {
+                        squares.Pop();
+                        currentSums.Pop();
+                    }
+                }
+
+                deadEnd = squareFactorsRecursive(squares, currentSums);
+                alreadyCalculated.Add(string.Join(" ,", squares));
+            }
+
+            return "";
+        }
+        
+        public static bool squareFactorsRecursive(Stack<long> squares, Stack<long> currentSums)
+        {
+            long currentSum = currentSums.Peek() - (long)Math.Pow(squares.Peek(), 2);                
+            long nextNumber = (long)Math.Floor(Math.Sqrt(currentSum));           
+
+            if (nextNumber >= squares.Peek()) return true;
+            if (currentSum - nextNumber == 0)
+            {
+                currentSums.Push(currentSum);
+                if(nextNumber >0)squares.Push(nextNumber);
+                return true;
+
+            }
+            if (currentSum - nextNumber < 0) return true;
+            if (nextNumber < 0) return true;
+
+            if (currentSum > 0 && nextNumber > 0)
+            {
+                currentSums.Push(currentSum);
+                squares.Push(nextNumber);
+            }
+
+            return squareFactorsRecursive(squares,currentSums);
+
+        }
+
+        #endregion
+
+
+
+
 
         //Block sequence unsolved!
         //https://www.codewars.com/kata/5e1ab1b9fe268c0033680e5f/train/csharp
