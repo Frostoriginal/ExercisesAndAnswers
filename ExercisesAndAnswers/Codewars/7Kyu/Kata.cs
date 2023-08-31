@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ExercisesAndAnswers._7Kyu
 {
-    internal class Kata
+    public class Kata
     {
 
         //Survive the attack
@@ -349,7 +350,23 @@ namespace ExercisesAndAnswers._7Kyu
         //https://www.codewars.com/kata/559590633066759614000063/solutions/csharp
         public static int[] minMax(int[] lst) => new int[] { lst.Min(), lst.Max()};
 
+        //Sum of odd numbers
+        //https://www.codewars.com/kata/55fd2d567d94ac3bc9000064/train/csharp
+        public static long RowSumOddNumbers(long n) => n * n * n;
+
+        //Regex validate PIN code
+        //https://www.codewars.com/kata/55f8a9c06c018a0d6e000132/train/csharp
+        public static bool ValidatePin(string pin)
+        {
+            if (pin.Length != 4 && pin.Length != 6) return false;
+            return Regex.Match(pin, @"^(?:\d{4}|\d{6})$").Success;
+        }
+        //proper regex, edge case = "1234\n"
+        public static bool ValidatePin2(string pin) =>  Regex.Match(pin, @"^(?:\d{4}|\d{6})\z").Success;
+        //with linq
+        public static bool ValidatePin3(string pin) => pin.All(n => Char.IsDigit(n)) && (pin.Length == 4 || pin.Length == 6);
         
+
 
 
     }

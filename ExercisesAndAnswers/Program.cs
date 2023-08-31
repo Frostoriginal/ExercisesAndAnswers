@@ -1,15 +1,16 @@
 ﻿using ExercisesAndAnswers._3Kyu;
 using ExercisesAndAnswers.Codewars._5Kyu;
 using ExercisesAndAnswers.Codewars._5Kyu.Car2;
+using ExercisesAndAnswers.Codewars;
 using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
 namespace ExercisesAndAnswers { 
-internal class Program
+public class Program
 {
-        private static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             string a =
                     "..WWWWWWWWWWWWWWWWWW\n" +
@@ -65,15 +66,63 @@ internal class Program
 
 
 
-            Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(80402, 0.4657497334675821));
-            ;
+            //Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(80402, 0.4657497334675821));
+
+            // ExercisesAndAnswers._4Kyu.Kata.solve(123456789);
 
 
+
+            ///Block sequences brute force
+            ///   new Regex(@"^([:|;])([-|~)])?([\)|D])$");       
+
+            /*
+            //  string currString = "";
+
+            string currNumber = "";
+            long currLength = 0;
+            for (long i = 1; i < 30; i++)
+            {
+                currNumber += i.ToString();
+                long currStep = currNumber.ToString().Length;
+                currLength += currStep;
+               // currString += currNumber;
+                Console.WriteLine($"current n: {currLength} current step: {currStep} current i {i}");
+
+            }
+
+            if(currLength>1000000000000000000) Console.WriteLine("maxed out");
+            */
+            
+            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.solve(123456789));
+
+//          await ExercisesAndAnswers._6Kyu.Kata.WikidataScraper("https://www.wikidata.org/wiki/Special:EntityData/Q42.json");
+
+            Dictionary<string, string> dic = new();
+            dic = await ExercisesAndAnswers._6Kyu.Kata.WikidataScraper("https://www.wikidata.org/wiki/Special:EntityData/Q42.json");
+
+            foreach (var item in dic)
+            {
+                await Console.Out.WriteLineAsync($"key: {item.Key} value: {item.Value}");
+            }
+
+            dic = await ExercisesAndAnswers._6Kyu.Kata.WikidataScraper("https://www.wikidata.org/wiki/Special:EntityData/Q513.json");
+
+            foreach (var item in dic)
+            {
+                await Console.Out.WriteLineAsync($"key: {item.Key} value: {item.Value}");
+            }
+
+            dic = await ExercisesAndAnswers._6Kyu.Kata.WikidataScraper("https://www.wikidata.org/wiki/Special:EntityData/Q97226458.json");
+
+            foreach (var item in dic)
+            {
+                await Console.Out.WriteLineAsync($"key: {item.Key} value: {item.Value}");
+            }
 
 
         }
 
-       
+
 
 
 

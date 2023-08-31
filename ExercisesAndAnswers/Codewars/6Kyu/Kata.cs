@@ -4,10 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Net;
+using System.Text.Json;
+using System.Net.Http;
+using System.Net.Http.Json;
+using ExercisesAndAnswers.Codewars._4Kyu;
+using System.Net.NetworkInformation;
+using System.Text.Json.Serialization;
+using System.Xml.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace ExercisesAndAnswers._6Kyu
 {
-    internal class Kata
+    public class Kata
     {
         //Bouncing balls
         //https://www.codewars.com/kata/5544c7a5cb454edb3c000047/solutions/csharp
@@ -531,6 +540,66 @@ namespace ExercisesAndAnswers._6Kyu
             }           
             return result;
         }
+
+        public static async Task<Dictionary<string, string>> WikidataScraper(string url)
+        {
+            /* Important:
+              - The namespace for Task<T> is globaly provided. 
+              - Please initilize HttpClient with the "handler" below. (also, please use HttpClient.)
+              - Ignore the AutomaticDecompression line, but don't delete it please. 
+            */
+            using HttpClientHandler handler = new();
+            handler.AutomaticDecompression = System.Net.DecompressionMethods.GZip | System.Net.DecompressionMethods.Deflate;                 
+
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            JObject parsedResponseBody = JObject.Parse(responseBody);
+            
+            //ID
+            string id = "";
+            if(Regex.Match(responseBody, @"([Q])\d+").Success) id = Regex.Match(responseBody, @"([Q])\d+").Value;
+
+            //Label
+            string label = "No Label";                                
+            try
+            {
+                if ((string)parsedResponseBody["entities"][id]["labels"]["en"]["value"] != null) label = (string)parsedResponseBody["entities"][id]["labels"]["en"]["value"];
+                else
+                {
+
+                }
+            }
+            catch (Exception e)
+            {
+
+                await Console.Out.WriteLineAsync(e.Message);
+            }          
+          
+            //Description
+
+            string description = "No Description";
+            try
+            {
+                if ((string)parsedResponseBody["entities"][id]["descriptions"]["en"]["value"] != null) description = (string)parsedResponseBody["entities"][id]["descriptions"]["en"]["value"];
+                else
+                {
+
+                }
+            }
+            catch (Exception e)
+            {
+                await Console.Out.WriteLineAsync(e.Message);
+            }
+
+
+            /// <-- !Hajime! --> \\\
+            return new Dictionary<string, string> {{"ID", id},{"LABEL", label},{"DESCRIPTION", description}};
+            
+        }
+
+       
 
 
 
