@@ -6,11 +6,12 @@ using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 namespace ExercisesAndAnswers { 
 public class Program
 {
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
             string a =
                     "..WWWWWWWWWWWWWWWWWW\n" +
@@ -92,34 +93,48 @@ public class Program
 
             if(currLength>1000000000000000000) Console.WriteLine("maxed out");
             */
-            
+
             // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.solve(123456789));
 
-//          await ExercisesAndAnswers._6Kyu.Kata.WikidataScraper("https://www.wikidata.org/wiki/Special:EntityData/Q42.json");
+            //          await ExercisesAndAnswers._6Kyu.Kata.WikidataScraper("https://www.wikidata.org/wiki/Special:EntityData/Q42.json");
 
-            Dictionary<string, string> dic = new();
-            dic = await ExercisesAndAnswers._6Kyu.Kata.WikidataScraper("https://www.wikidata.org/wiki/Special:EntityData/Q42.json");
+           string photo = "======pe====nnnnnn=======================n=n=ng====u==iiii=iii==nn========================n=";
+            /*
+            Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
 
-            foreach (var item in dic)
-            {
-                await Console.Out.WriteLineAsync($"key: {item.Key} value: {item.Value}");
-            }
+            photo = "==========h===yyyyyy===eeee=n==a========";
+            Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
 
-            dic = await ExercisesAndAnswers._6Kyu.Kata.WikidataScraper("https://www.wikidata.org/wiki/Special:EntityData/Q513.json");
+            photo = "=====r=rrr=rra=====eee======bb====b=======";
+            Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
+            */
+            photo = "===b=b==========a=a=a=a=a=a=a=boo======n=====";
+            Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
+            
+           // photo = "=====tt=tww=w==en===n=n=n========X===\r\n======y==y==l=ll===l==f==ff=r===rr==r==e==e===e==t===tt=t=t==u==uub========X===\r\n=======w=a=a==a==l===l==l==ll===l==laa=bb=y=====";
+          //  Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
+            
+            photo = "=====";
+           // Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
+            
+            photo = "==============\r\n===       ===snake=========";
+          //  Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
+            
+          //  photo = "===b=b==========a=a=a=a=a=a=a=boo======n=====\r\n====l===e===r=======riuqs=====\r\n=====k====r=a=vvvv==d=d=d=d=r==a=a=======\r\n====rraabbiitt==";
+          //  Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
 
-            foreach (var item in dic)
-            {
-                await Console.Out.WriteLineAsync($"key: {item.Key} value: {item.Value}");
-            }
+          //  photo = "==a======a=a=a=lig===a=t====o=r=r=r=r==";
+            //Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
 
-            dic = await ExercisesAndAnswers._6Kyu.Kata.WikidataScraper("https://www.wikidata.org/wiki/Special:EntityData/Q97226458.json");
+            /*
+            string unflatten = new string(bear.Replace('=', ' ').Replace(" ", "").Distinct().ToArray());
+            Console.WriteLine(bear);
+            Console.WriteLine(unflatten);
+            var animals ="x";
 
-            foreach (var item in dic)
-            {
-                await Console.Out.WriteLineAsync($"key: {item.Key} value: {item.Value}");
-            }
-
-
+            string reversed = new string(unflatten.Reverse().ToArray());
+            Console.WriteLine(reversed);
+            */
         }
 
 

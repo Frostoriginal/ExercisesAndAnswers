@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ExercisesAndAnswers._5Kyu
@@ -82,6 +83,112 @@ namespace ExercisesAndAnswers._5Kyu
 
             //return -1;
         }
+
+        //Not very secure
+        //https://www.codewars.com/kata/526dbd6c8c0eb53254000110/train/csharp
+
+        public static bool Alphanumeric(string str) => Regex.Match(str, @"^[a-zA-Z\d]+\z").Success;
+
+
+        //The road-kill detective
+        //
+        public static string RoadKill(string photo)
+        {
+            Console.WriteLine(photo);
+
+            List<string> animals = new List<string> { "hyena", "penguin", "bear", "baboon", "wallaby", "snake", "rat", "rabbit" };
+
+            if (photo.Contains(" ") || photo.Contains("X")) return "??"; //edge case uncomplete tracks
+            
+            char[] chars = photo.Replace("=", "").ToCharArray();            
+            if(chars.Length == 0) return "??";
+            string deflattenedAnimal = "";
+            deflattenedAnimal += chars[0];             
+
+            for (int i = 1; i < chars.Length; i++)
+            {  
+                if (chars[i] != chars[i-1]) deflattenedAnimal += chars[i];
+            }
+            
+            if (animals.Contains(deflattenedAnimal)) return deflattenedAnimal;
+            string reversed = new string(deflattenedAnimal.Reverse().ToArray());
+            if (animals.Contains(reversed)) return reversed;
+
+            foreach (string str in animals) 
+            {
+                bool animalCheck = false;
+                if (str[0] == deflattenedAnimal[0] && str.Length == deflattenedAnimal.Length)
+                {
+                    animalCheck = true;
+                    for (int i = 1; i < str.Length; i++)
+                    {
+                        if (deflattenedAnimal[i] != str[i] ) animalCheck = false;
+                    }
+                }
+                if (str[0] == reversed[0] && str.Length == deflattenedAnimal.Length) 
+                {
+                    animalCheck = true;
+                    for (int i = 1; i < str.Length; i++)
+                    {
+                        if (reversed[i] != str[i]) animalCheck = false;
+                    }
+                }
+                //1 away
+                if (str[0] == deflattenedAnimal[0] && str.Length == deflattenedAnimal.Length+1)
+                {
+                    animalCheck = true;
+                    for (int i = 1; i < deflattenedAnimal.Length; i++)
+                    {
+
+                        if (deflattenedAnimal[i] != str[i])
+                        {
+                            animalCheck = false;
+                            if (i + 1<= deflattenedAnimal.Length)
+                            {
+                                if (deflattenedAnimal[i] == str[i + 1]) animalCheck = true;
+                            }
+                            if (i - 1>= 0)
+                            {
+                                if (deflattenedAnimal[i] == str[i - 1]) animalCheck = true;
+                            }
+
+                        }
+
+                    }
+                }
+                if (str[0] == reversed[0] && str.Length == deflattenedAnimal.Length)
+                {
+                    animalCheck = true;
+                    for (int i = 1; i < reversed.Length; i++)
+                    {
+                        if (reversed[i] != str[i])
+                        {
+                            animalCheck = false;
+                            if(i+1 !> reversed.Length)
+                            {
+                                if (reversed[i] == str[i + 1]) animalCheck = true;
+                            }
+                            if(i-1 !<0 )
+                            {
+                                if (reversed[i] == str[i - 1]) animalCheck = true;
+                            }
+                            
+                        }
+                        
+                    }
+                }
+
+                if (animalCheck) return str;
+            }           
+
+            
+
+            return "??";
+        }
+
+
+
+
 
     }
 
