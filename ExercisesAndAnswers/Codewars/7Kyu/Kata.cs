@@ -365,9 +365,10 @@ namespace ExercisesAndAnswers._7Kyu
         public static bool ValidatePin2(string pin) =>  Regex.Match(pin, @"^(?:\d{4}|\d{6})\z").Success;
         //with linq
         public static bool ValidatePin3(string pin) => pin.All(n => Char.IsDigit(n)) && (pin.Length == 4 || pin.Length == 6);
-        
 
-
+        //List Filtering
+        //https://www.codewars.com/kata/53dbd5315a3c69eed20002dd/train/csharp
+        public static IEnumerable<int> GetIntegersFromList(List<object> listOfItems) => listOfItems.Where(s => s is int).Select(x => (int)x);
 
     }
 }

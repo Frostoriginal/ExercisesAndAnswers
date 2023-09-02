@@ -321,6 +321,10 @@ namespace ExercisesAndAnswers._3Kyu
             }
         }
 
+
+        
+
+
         //Binomial Expansion 3kyu
         //https://www.codewars.com/kata/540d0fdd3b6532e5c3000b5b
         public static string Expand(string expr)

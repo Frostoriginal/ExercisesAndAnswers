@@ -89,6 +89,11 @@ namespace ExercisesAndAnswers._5Kyu
 
         public static bool Alphanumeric(string str) => Regex.Match(str, @"^[a-zA-Z\d]+\z").Success;
 
+        //Human Readable Time
+        //https://www.codewars.com/kata/52685f7382004e774f0001f7/solutions/csharp
+        public static string GetReadableTime(int seconds) => $"{seconds / 3600:D2}:{seconds % 3600 / 60:D2}:{seconds % 3600 % 60:D2}";
+
+
 
         //The road-kill detective
         //
