@@ -96,14 +96,70 @@ namespace ExercisesAndAnswers._5Kyu
 
 
         //The road-kill detective
-        //
+        //https://www.codewars.com/kata/58e18c5434a3022d270000f2/train/csharp
         public static string RoadKill(string photo)
         {
             Console.WriteLine(photo);
 
-            List<string> animals = new List<string> { "hyena", "penguin", "bear", "baboon", "wallaby", "snake", "rat", "rabbit" };
+            List<string> animals = new List<string> { "hyena", "penguin", "bear", "baboon", "wallaby", "snake", "rat", "rabbit", "aardvark", "squirrel", "fox" };
 
             if (photo.Contains(" ") || photo.Contains("X")) return "??"; //edge case uncomplete tracks
+            string cleanedUp = new string(photo.Replace("=", "").ToCharArray());
+            string reversed = new string(cleanedUp.Reverse().ToArray());
+
+            if (cleanedUp.Length == 0) return "??";
+
+            foreach (string animal in animals)
+            {
+                if (animal[0] == cleanedUp[0])
+                {
+                    int j = 1;                    
+                    for (int i = 1; i < cleanedUp.Length; i++)
+                    {   if (i > cleanedUp.Length-1 || j > animal.Length - 1) break;                        
+                        if (animal[j] == cleanedUp[i])
+                        {
+                            int temp = animal.Length - 1;
+                            if (j == animal.Length - 1)
+                            {  if (i == cleanedUp.Length - 1) return animal;
+                                for (int k = i+1; k < cleanedUp.Length; k++)
+                                {
+                                    if (cleanedUp[k] != animal[j]) break;
+                                    if(k == cleanedUp.Length-1) return animal;
+                                }                                
+                            }
+                            j++;
+                        };
+                        if (cleanedUp[i] != animal[j - 1] && cleanedUp[i] != animal[j]) break;
+                    }
+                }
+
+                if (animal[0] == reversed[0])
+                {
+                    int j = 1;
+                    for (int i = 1; i < reversed.Length; i++)
+                    {
+                        if (i > reversed.Length - 1 || j > animal.Length - 1) break;
+                        if (animal[j] == reversed[i])
+                        {
+                            int temp = animal.Length - 1;
+                            if (j == animal.Length - 1)
+                            {
+                                if (i == reversed.Length - 1) return animal;
+                                for (int k = i + 1; k < reversed.Length; k++)
+                                {
+                                    if (reversed[k] != animal[j]) break;
+                                    if (k == reversed.Length - 1) return animal;
+                                }
+                            }
+                            j++;
+                        };
+                        if (reversed[i] != animal[j - 1] && reversed[i] != animal[j]) break;
+                    }
+                }
+            }
+            return "??";
+
+            /*
             
             char[] chars = photo.Replace("=", "").ToCharArray();            
             if(chars.Length == 0) return "??";
@@ -186,9 +242,9 @@ namespace ExercisesAndAnswers._5Kyu
                 if (animalCheck) return str;
             }           
 
-            
+            */
 
-            return "??";
+
         }
 
 

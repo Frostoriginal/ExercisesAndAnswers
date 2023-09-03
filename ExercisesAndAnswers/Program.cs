@@ -50,32 +50,13 @@ public class Program
             // Func<int, int> fibonacci = null;
             // fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
             //Console.WriteLine($"{fibonacci(10)}");
-            //Console.WriteLine(IsValidWalk(new string[] { "w", "e", "w", "e", "w", "e", "w", "e", "w", "e", "w", "e" }));
-
-
-            // ExercisesAndAnswers._6Kyu.Kata.UniqueInOrder("AAAABBBCCDAABBB");
-
-            // ExercisesAndAnswers._6Kyu.Kata.UniqueInOrder(new int[] { 1, 2, 2, 3, 3 });
-            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.Extract(new int[] {1,2,3}));
-
-            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.Extract(new int[] { -10, -9, -8, -6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20,22,23,25 }));
-
-            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.Extract(new[] { -6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20 }));
-
-            //   Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.sumStrings("00103", "08567"));
-
-
-
-
+           
             //Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(80402, 0.4657497334675821));
 
             // ExercisesAndAnswers._4Kyu.Kata.solve(123456789);
 
-
-
             ///Block sequences brute force
-            ///   new Regex(@"^([:|;])([-|~)])?([\)|D])$");       
-
+            
             /*
             //  string currString = "";
 
@@ -94,47 +75,7 @@ public class Program
             if(currLength>1000000000000000000) Console.WriteLine("maxed out");
             */
 
-            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.solve(123456789));
-
-            //          await ExercisesAndAnswers._6Kyu.Kata.WikidataScraper("https://www.wikidata.org/wiki/Special:EntityData/Q42.json");
-
-            string photo = "======pe====nnnnnn=======================n=n=ng====u==iiii=iii==nn========================n=";
-            /*
-            Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
-
-            photo = "==========h===yyyyyy===eeee=n==a========";
-            Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
-
-            photo = "=====r=rrr=rra=====eee======bb====b=======";
-            Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
-            */
-            photo = "===b=b==========a=a=a=a=a=a=a=boo======n=====";
-            // Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
-
-            // photo = "=====tt=tww=w==en===n=n=n========X===\r\n======y==y==l=ll===l==f==ff=r===rr==r==e==e===e==t===tt=t=t==u==uub========X===\r\n=======w=a=a==a==l===l==l==ll===l==laa=bb=y=====";
-            //  Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
-
-            photo = "=====";
-            // Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
-
-            photo = "==============\r\n===       ===snake=========";
-            //  Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
-
-            //  photo = "===b=b==========a=a=a=a=a=a=a=boo======n=====\r\n====l===e===r=======riuqs=====\r\n=====k====r=a=vvvv==d=d=d=d=r==a=a=======\r\n====rraabbiitt==";
-            //  Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
-
-            //  photo = "==a======a=a=a=lig===a=t====o=r=r=r=r==";
-            //Console.WriteLine(ExercisesAndAnswers._5Kyu.Kata.RoadKill(photo));
-
-            /*
-            string unflatten = new string(bear.Replace('=', ' ').Replace(" ", "").Distinct().ToArray());
-            Console.WriteLine(bear);
-            Console.WriteLine(unflatten);
-            var animals ="x";
-
-            string reversed = new string(unflatten.Reverse().ToArray());
-            Console.WriteLine(reversed);
-            */
+            
 
 
             List<int[]> rectangles = new();
@@ -145,29 +86,7 @@ public class Program
             //  Console.WriteLine(ExercisesAndAnswers.Codewars._3Kyu.RectangleUnion.TotalAreaWithLineAndDictionary(rectangles));
             //  Console.WriteLine(ExercisesAndAnswers.Codewars._3Kyu.RectangleUnion.RectangleArea(rectangles));
 
-            int n = 45620;
-            int m = 45620;
-            int HH = 0;
-            int MM = 0;
-            int SS = 0;
-            if (n > 3600)
-            {
-                HH = n / 3600;
-                n = n - HH * 3600;
-            }
-            if (n > 60)
-            {
-                MM = n / 60;
-                SS = n - MM * 60;
-            }
-            string HZero = "";
-            string MZero = "";
-            string SZero = "";
-            if(HH<=10) HZero = "0";
-            if(MM<=0) MZero  = "0";
-            if(SS<=0) SZero = "0";
-            Console.WriteLine($"{HZero}{HH}:{MZero}{MM}:{SZero}{SS}");
-            Console.WriteLine($"{m/3600:D2}:{m%3600/60:D2}:{m%3600%60:D2}");
+           
 
 
 
