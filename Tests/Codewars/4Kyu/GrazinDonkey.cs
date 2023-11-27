@@ -41,6 +41,7 @@ namespace Tests.Codewars._4Kyu
             int fieldDiameter = 1774659813;
             double eatenRatio = 0.910237788102865;
             int expected = 1567186079;
+                        // 2147483647
             Assert.True(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(fieldDiameter, eatenRatio) == expected);
         }
 
@@ -50,6 +51,23 @@ namespace Tests.Codewars._4Kyu
             int fieldDiameter = 26053;
             double eatenRatio = 0.5706236655715278;
             int expected = 16391;
+            Assert.True(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(fieldDiameter, eatenRatio) == expected);
+        }
+
+        [Fact]
+        public void AttemptTest1()
+        {
+            int fieldDiameter = 1340574461;
+            double eatenRatio = 0.5926067310361772;
+            int expected = 864099580;
+            Assert.True(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(fieldDiameter, eatenRatio) == expected);
+        }
+        [Fact]
+        public void AttemptTest2()
+        {
+            int fieldDiameter = 1326111850;
+            double eatenRatio = 0.3122024843537028;
+            int expected = 582219809;
             Assert.True(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(fieldDiameter, eatenRatio) == expected);
         }
     }

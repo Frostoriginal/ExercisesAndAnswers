@@ -1468,39 +1468,53 @@ namespace ExercisesAndAnswers._4Kyu
             return result;
         }
 
-        //Grazin donkey
-        // https://www.codewars.com/kata/5b5ce2176d0db7331f0000c0/train/csharp
+        #region Grazin donkey
+        // https://www.codewars.com/kata/5b5ce2176d0db7331f0000c0
         public static int GetRopeLength(int fieldDiameter, double eatenRatio)
         {
+            //edge cases
             if (eatenRatio == 1) return fieldDiameter;
             if (eatenRatio == 0 || fieldDiameter == 0) return 0;
 
-            double R1 = fieldDiameter / 2;
-           
+            double R1 = fieldDiameter / 2.0;
             double maxFeedingArea = (Math.PI * Math.Pow(R1, 2)) * eatenRatio;
             
-            double R2 = 0; 
-            double alpha, beta, a1, a2;           
-            double ans = 0;
-            bool running = true;
+            int upperBound = fieldDiameter;            
+            int lowerBound = 1;
+            int halfWay = lowerBound + (upperBound - lowerBound) /2;
 
-            while (running)
+            while (upperBound - lowerBound > 1)
             {
-                R2++;
-                alpha = Math.Acos((2*Math.Pow(fieldDiameter / 2, 2) - R2 * R2) / (2 * Math.Pow(fieldDiameter / 2, 2))) * 2;
-                beta = Math.Acos((R2 * R2) / (2 * R2 * fieldDiameter / 2)) * 2;
-                a1 = 0.5 * beta * R2 * R2 - 0.5 * R2 * R2 * Math.Sin(beta);
-                a2 = 0.5 * alpha * Math.Pow(fieldDiameter / 2, 2) - 0.5 * Math.Pow(fieldDiameter / 2, 2) * Math.Sin(alpha);
-                ans = a1 + a2;
-                if (ans > maxFeedingArea)
+                if (calculateTheField(R1, halfWay) > maxFeedingArea)
                 {
-                    int x = 0;   
-                    running = false; 
-                }
+                    upperBound = halfWay;
+                    halfWay = lowerBound + (upperBound - lowerBound) / 2;
+                }                
+                else
+                {
+                    lowerBound = halfWay;
+                    halfWay = lowerBound + (upperBound - lowerBound) / 2;
+                }                            
+
             }
-                       
-            return (int)R2-1; 
+            
+            return lowerBound;
+
         }
+        
+        static double calculateTheField(double R1, double R2)
+        {
+            double alpha, beta, a1, a2;
+            alpha = Math.Acos((2 * Math.Pow(R1, 2) - R2 * R2) / (2 * Math.Pow(R1, 2))) * 2;
+            beta = Math.Acos((R2 * R2) / (2 * R2 * R1)) * 2;
+            a1 = 0.5 * beta * R2 * R2 - 0.5 * R2 * R2 * Math.Sin(beta);
+            a2 = 0.5 * alpha * Math.Pow(R1, 2) - 0.5 * Math.Pow(R1, 2) * Math.Sin(alpha);
+            return a1 + a2;
+        }
+        #endregion
+
+
+
 
 
 

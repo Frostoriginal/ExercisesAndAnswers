@@ -13,34 +13,34 @@ public class Program
 {
         public static void Main(string[] args)
         {
-            string a =
-                    "..WWWWWWWWWWWWWWWWWW\n" +
-                    "W.................WW\n" +
-                    "W.WWWWWWWWWWWWWWW.WW\n" +
-                    "W.WW..............WW\n" +
-                    "W.WW.WWWWWWWWWWWWWWW\n" +
-                    "W.WW.WWWWWWWWWWWWWWW\n" +
-                    "W.WW.WWWWWWWWWWWWWWW\n" +
-                    "W.WW................\n" +
-                    "W.WWWWWWWWWWWWWWWWW.\n" +
-                    "W.WWWWWWWWWWWWWWWWW.\n" +
-                    "W.WWWWWWWWWWWWWWWWW.\n" +
-                    "W.WWWWWWWWWWWWWWWWW.\n" +
-                    "W.WWWWWWWWWWWWWWWWW.\n" +
-                    "W.WWWWWWWWWWWWWWWWW.\n" +
-                    "W.WWWWWWWWWWWWWWWWW.\n" +
-                    "W.WWWWWWWWWWWWWWWWW.\n" +
-                    "W.WWWWWWWWWWWWWWWWW.\n" +
-                    "W.WWWWWWWWWWWWWWWWW.\n" +
-                    "W.WWWWWWWWWWWWWWWWW.\n" +
-                    "W...................";
-            //MathWorks.mazeConvertor(a);
-            string c = "......\n" +
-                    "......\n" +
-                    "......\n" +
-                    "......\n" +
-                    "......\n" +
-                    "......";
+            //string a =
+            //        "..WWWWWWWWWWWWWWWWWW\n" +
+            //        "W.................WW\n" +
+            //        "W.WWWWWWWWWWWWWWW.WW\n" +
+            //        "W.WW..............WW\n" +
+            //        "W.WW.WWWWWWWWWWWWWWW\n" +
+            //        "W.WW.WWWWWWWWWWWWWWW\n" +
+            //        "W.WW.WWWWWWWWWWWWWWW\n" +
+            //        "W.WW................\n" +
+            //        "W.WWWWWWWWWWWWWWWWW.\n" +
+            //        "W.WWWWWWWWWWWWWWWWW.\n" +
+            //        "W.WWWWWWWWWWWWWWWWW.\n" +
+            //        "W.WWWWWWWWWWWWWWWWW.\n" +
+            //        "W.WWWWWWWWWWWWWWWWW.\n" +
+            //        "W.WWWWWWWWWWWWWWWWW.\n" +
+            //        "W.WWWWWWWWWWWWWWWWW.\n" +
+            //        "W.WWWWWWWWWWWWWWWWW.\n" +
+            //        "W.WWWWWWWWWWWWWWWWW.\n" +
+            //        "W.WWWWWWWWWWWWWWWWW.\n" +
+            //        "W.WWWWWWWWWWWWWWWWW.\n" +
+            //        "W...................";
+            ////MathWorks.mazeConvertor(a);
+            //string c = "......\n" +
+            //        "......\n" +
+            //        "......\n" +
+            //        "......\n" +
+            //        "......\n" +
+            //        "......";
             //Console.WriteLine(MathWorks.PathFinder2(a));
             // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.PathFinder2(a));
             // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.PathGraph(c));
@@ -50,13 +50,19 @@ public class Program
             // Func<int, int> fibonacci = null;
             // fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
             //Console.WriteLine($"{fibonacci(10)}");
-           
-            //Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(80402, 0.4657497334675821));
 
+            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(200, 0.5));
+
+            //Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(200, 0.5));
+            Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(1240282897, 0.5066740381908333));
+           
+            //Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLengthDec(1277841897, 0.566217129));
+                                                                                     //1.7976931348623157
+            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(26053, 0.5706236655715278));
             // ExercisesAndAnswers._4Kyu.Kata.solve(123456789);
 
             ///Block sequences brute force
-            
+
             /*
             //  string currString = "";
 
@@ -75,18 +81,18 @@ public class Program
             if(currLength>1000000000000000000) Console.WriteLine("maxed out");
             */
 
-            
 
 
-            List<int[]> rectangles = new();
-            rectangles.Add(new int[] { 3, 3, 8, 5 });
-            rectangles.Add(new int[] { 6, 3, 8, 9 });
-            rectangles.Add(new int[] { 11, 6, 14, 12 });
+
+            //List<int[]> rectangles = new();
+            //rectangles.Add(new int[] { 3, 3, 8, 5 });
+            //rectangles.Add(new int[] { 6, 3, 8, 9 });
+            //rectangles.Add(new int[] { 11, 6, 14, 12 });
 
             //  Console.WriteLine(ExercisesAndAnswers.Codewars._3Kyu.RectangleUnion.TotalAreaWithLineAndDictionary(rectangles));
             //  Console.WriteLine(ExercisesAndAnswers.Codewars._3Kyu.RectangleUnion.RectangleArea(rectangles));
 
-           
+
 
 
 
