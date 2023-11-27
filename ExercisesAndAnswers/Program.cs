@@ -51,15 +51,15 @@ public class Program
             // fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
             //Console.WriteLine($"{fibonacci(10)}");
 
-            for (int i = 1; i < 10000; i++)
-            {
-                if (ExercisesAndAnswers._4Kyu.Kata.solve(i) != ExercisesAndAnswers._4Kyu.Kata.solve2(i))
-                {
-                    Console.WriteLine($"Problem number:{i}");
-                }
+            //for (int i = 1; i < 10000; i++)
+            //{
+            //    if (ExercisesAndAnswers._4Kyu.Kata.solve(i) != ExercisesAndAnswers._4Kyu.Kata.solve2(i))
+            //    {
+            //        Console.WriteLine($"Problem number:{i}");
+            //    }
 
-            }           
-            
+            //}           
+
 
             //if (ExercisesAndAnswers._4Kyu.Kata.solve(x) == ExercisesAndAnswers._4Kyu.Kata.solve(x))
             //{
@@ -67,11 +67,13 @@ public class Program
             //}
             //else { Console.WriteLine(false); }
 
-            //Console.WriteLine($"Answer: {ExercisesAndAnswers._4Kyu.Kata.solve(x)}");
-
-           // Console.WriteLine($"BruteForce: {ExercisesAndAnswers._4Kyu.Kata.solve2(x)}");
-
+            long x = 999999999999999993;
+            Console.WriteLine($"Answer: {ExercisesAndAnswers._4Kyu.Kata.solve(x)}");
             
+
+            // Console.WriteLine($"BruteForce: {ExercisesAndAnswers._4Kyu.Kata.solve2(x)}");
+
+
 
 
 

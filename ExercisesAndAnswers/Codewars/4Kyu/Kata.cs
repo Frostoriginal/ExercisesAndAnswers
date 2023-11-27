@@ -1438,8 +1438,8 @@ namespace ExercisesAndAnswers._4Kyu
 
 
 
-
-        //Block sequence unsolved!
+        //Unsolved!
+        #region //Block sequence
         //https://www.codewars.com/kata/5e1ab1b9fe268c0033680e5f/train/csharp
         public static int solve2(long n)
         {
@@ -1519,15 +1519,12 @@ namespace ExercisesAndAnswers._4Kyu
                     }
 
 
-                    step = i + j + k + l + m;
+                    step = i + j + k + l + m + o + p + q + r;
                     if (n - step > 0) n -= step;
-
-                    // n = n - step;
-
-                   // Console.WriteLine($"Current n: {n}, current step: {step}, current i: {i}");
+                    Console.WriteLine($"Current n:{n}, current step:{step}");
                 }
                 if (n < 9) return (int)n;
-
+               
             }
             else
             {
@@ -1535,34 +1532,19 @@ namespace ExercisesAndAnswers._4Kyu
                 return int.Parse(numbers[(int)n - 1].ToString());
             }
 
-            // Console.WriteLine($"left: {n}");
-
-
             long z = 1;
-
-            string currString = "";
-            string currNumber = "";
-            long currLength = 0;
-            bool running = true;
+            string currString = "";           
             while (currString.Length < n)
-            {
-                currNumber = z.ToString();
-                // long currStep = currNumber.ToString().Length;
-                // currLength += currStep;
-                currString += currNumber;
+            {                
+                currString += z.ToString();
                 z++;
-                // Console.WriteLine($"input n:{n} \ncurrent n: {currString.Length} \n");
-                // if (currLength > n) running = false;
-            }
-            // Console.WriteLine(currString);
-            char x = currString[(int)n - 1];
-            // Console.WriteLine($"char {x}");
-            string y = x.ToString();
-            int.TryParse(y, out int result);
-            //  Console.WriteLine("Done");
-
-            return result;
+                
+            }            
+           
+            return int.Parse(currString[(int)n - 1].ToString());
         }
+
+        #endregion
 
         #region Grazin donkey
         // https://www.codewars.com/kata/5b5ce2176d0db7331f0000c0

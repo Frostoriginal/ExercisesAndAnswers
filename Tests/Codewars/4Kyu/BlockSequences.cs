@@ -81,7 +81,7 @@ namespace Tests.Codewars._4Kyu
         }
 
         [Fact]
-        public void Test9()
+        public void MaximumInputValueMin1()
         {
             long n = 999999999999999999;
             int expected = 4;
@@ -89,7 +89,7 @@ namespace Tests.Codewars._4Kyu
         }
 
         [Fact]
-        public void Test10()
+        public void MaximumInputValue()
         {
             long n = 1000000000000000000;
             int expected = 1;
@@ -97,7 +97,7 @@ namespace Tests.Codewars._4Kyu
         }
 
           [Fact]
-        public void Test11()
+        public void MaximumInputValueMin7()
         {
             long n = 999999999999999993;
             int expected = 7;
