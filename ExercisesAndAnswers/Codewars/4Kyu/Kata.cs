@@ -853,7 +853,7 @@ namespace ExercisesAndAnswers._4Kyu
                     points.Add(new int[] { ipoint, jpoint + 1 });
                 }
                 //3. lookaround through queue
-               // coordinates.Dequeue();
+                // coordinates.Dequeue();
 
                 //visualizer
 
@@ -915,12 +915,12 @@ namespace ExercisesAndAnswers._4Kyu
             {
                 factorial *= i;
             }
-          
+
             return factorial.ToString();
         }
-        public static string Factorial2(int n) 
-                                               
-        {   
+        public static string Factorial2(int n)
+
+        {
             if (n < 0) return "";
 
             //Calculte array size with stirlings formula
@@ -934,11 +934,11 @@ namespace ExercisesAndAnswers._4Kyu
             for (int x = 2; x <= n; x++)
             {
                 result_size = multiply(x, resultArray, result_size);
-            }          
+            }
             //parse result from array to string, number by number in reverse order
-            string resultatAsString = "";            
+            string resultatAsString = "";
             for (int i = result_size - 1; i >= 0; i--)
-            {     
+            {
                 resultatAsString += resultArray[i].ToString();
             }
             //string tempTest = String.Join("", resultArray.Reverse()); is it faster?
@@ -949,13 +949,13 @@ namespace ExercisesAndAnswers._4Kyu
         }
 
         static int multiply(int x, int[] resultArray, int res_size) // multiply x * resultArray elementary school style, return result length
-        {            
+        {
             int carry = 0;
             for (int i = 0; i < res_size; i++)
             {
                 int localMultiplicationResult = resultArray[i] * x + carry;
                 resultArray[i] = localMultiplicationResult % 10; // Store last digit of localMultiplication result in resultArray, put rest in carry                                    
-                carry = localMultiplicationResult / 10; 
+                carry = localMultiplicationResult / 10;
             }
             // Put carry in res and increase result size
             while (carry != 0)
@@ -1247,11 +1247,11 @@ namespace ExercisesAndAnswers._4Kyu
         #region //Range Extraction
         //https://www.codewars.com/kata/51ba717bb08c1cd60f00002f/train/csharp
         public static string Extract(int[] args)
-        { 
-        if (args.Length < 3) return string.Join(",", args);
-            
-        List<string> result = new List<string>();
-            
+        {
+            if (args.Length < 3) return string.Join(",", args);
+
+            List<string> result = new List<string>();
+
             for (int i = 0; i < args.Length; i++)
             {
                 if (i + 2 < args.Length)
@@ -1305,7 +1305,7 @@ namespace ExercisesAndAnswers._4Kyu
         {
             string result = "";
             int arrayLength = 0;
-           
+
 
             //check if both numbers are the same lenght, if not check which one is longer to determine array length and make both same size.
             if (a.Length != b.Length)
@@ -1313,22 +1313,22 @@ namespace ExercisesAndAnswers._4Kyu
                 if (a.Length > b.Length)
                 {
                     arrayLength = a.Length;
-                    b = b.PadLeft(a.Length, '0');                   
+                    b = b.PadLeft(a.Length, '0');
                 }
                 else
                 {
                     arrayLength = b.Length;
-                   a = a.PadLeft(b.Length, '0');
+                    a = a.PadLeft(b.Length, '0');
                 }
             }
             else arrayLength = a.Length;
 
-            
+
 
             //add the numbers
             int localSum = 0;
             int carry = 0;
-            for (int i = arrayLength-1; i >= 0; i--)
+            for (int i = arrayLength - 1; i >= 0; i--)
             {
 
                 int.TryParse(a[i].ToString(), out int aInt);
@@ -1357,13 +1357,13 @@ namespace ExercisesAndAnswers._4Kyu
             Stack<long> squares = new();
             Stack<long> currentSums = new();
             List<string> alreadyCalculated = new();
-            bool deadEnd = false;            
+            bool deadEnd = false;
             long nSquared = (long)Math.Pow(n, 2);
             long currentSum = nSquared;
             squares.Push(n - 1);
             currentSums.Push(currentSum);
             squareFactorsRecursive(squares, currentSums);
-            alreadyCalculated.Add(string.Join(" ,", squares));                       
+            alreadyCalculated.Add(string.Join(" ,", squares));
 
             bool secondRun = true;
             while (secondRun)
@@ -1374,13 +1374,13 @@ namespace ExercisesAndAnswers._4Kyu
                     squareSum += (long)Math.Pow(item, 2);
                 }
                 if (squareSum == nSquared)
-                {                   
+                {
                     return string.Join(" ", squares);
-                }                               
+                }
 
                 if (deadEnd)
                 {
-                    deadEnd = false; 
+                    deadEnd = false;
                     if (alreadyCalculated.Contains(string.Join(" ,", squares)))
                     {
                         squares.Pop();
@@ -1406,17 +1406,17 @@ namespace ExercisesAndAnswers._4Kyu
 
             return "";
         }
-        
+
         public static bool squareFactorsRecursive(Stack<long> squares, Stack<long> currentSums)
         {
-            long currentSum = currentSums.Peek() - (long)Math.Pow(squares.Peek(), 2);                
-            long nextNumber = (long)Math.Floor(Math.Sqrt(currentSum));           
+            long currentSum = currentSums.Peek() - (long)Math.Pow(squares.Peek(), 2);
+            long nextNumber = (long)Math.Floor(Math.Sqrt(currentSum));
 
             if (nextNumber >= squares.Peek()) return true;
             if (currentSum - nextNumber == 0)
             {
                 currentSums.Push(currentSum);
-                if(nextNumber >0)squares.Push(nextNumber);
+                if (nextNumber > 0) squares.Push(nextNumber);
                 return true;
 
             }
@@ -1429,7 +1429,7 @@ namespace ExercisesAndAnswers._4Kyu
                 squares.Push(nextNumber);
             }
 
-            return squareFactorsRecursive(squares,currentSums);
+            return squareFactorsRecursive(squares, currentSums);
 
         }
 
@@ -1441,11 +1441,11 @@ namespace ExercisesAndAnswers._4Kyu
 
         //Block sequence unsolved!
         //https://www.codewars.com/kata/5e1ab1b9fe268c0033680e5f/train/csharp
-        public static int solve(long n)
+        public static int solve2(long n)
         {
             //Brute force attempt
             long i = 1;
-            
+
             string currString = "";
             string currNumber = "";
             long currLength = 0;
@@ -1457,14 +1457,110 @@ namespace ExercisesAndAnswers._4Kyu
                 currLength += currStep;
                 currString += currNumber;
                 i++;
-                Console.WriteLine($"input n:{n} \ncurrent n: {currLength} \ncurrent step: {currStep}");
+                // Console.WriteLine($"input n:{n} \ncurrent n: {currLength} \ncurrent step: {currStep}");
                 if (currLength > n) running = false;
             }
             // Console.WriteLine(currString);
             char x = currString[(int)n - 1];
             string y = x.ToString();
             int.TryParse(y, out int result);
-            Console.WriteLine("Done");
+            // Console.WriteLine("Done");
+            return result;
+        }
+
+        public static int solve(long n)
+        {
+            int step = 1;
+            int i = 0;
+            int j = 0;
+            int k = 0;
+            int l = 0;
+            int m = 0;
+            int o = 0;
+            int p = 0;
+            int q = 0;
+            int r = 0;
+            if (n > 9)
+            {
+                while (n - step > 0)
+                {
+                    i++;
+                    if (i > 9)
+                    {
+                        j++;
+                    }
+                    if (i > 99)
+                    {
+                        k++;
+                    }
+                    if (i > 999)
+                    {
+                        l++;
+                    }
+                    if (i > 9999)
+                    {
+                        m++;
+                    }
+                    if (i > 99999)
+                    {
+                        o++;
+                    }
+                    if (i > 999999)
+                    {
+                        p++;
+                    }
+                    if (i > 9999999)
+                    {
+                        q++;
+                    }
+                    if (i > 99999999)
+                    {
+                        r++;
+                    }
+
+
+                    step = i + j + k + l + m;
+                    if (n - step > 0) n -= step;
+
+                    // n = n - step;
+
+                   // Console.WriteLine($"Current n: {n}, current step: {step}, current i: {i}");
+                }
+                if (n < 9) return (int)n;
+
+            }
+            else
+            {
+                string numbers = "112123123412345123456";
+                return int.Parse(numbers[(int)n - 1].ToString());
+            }
+
+            // Console.WriteLine($"left: {n}");
+
+
+            long z = 1;
+
+            string currString = "";
+            string currNumber = "";
+            long currLength = 0;
+            bool running = true;
+            while (currString.Length < n)
+            {
+                currNumber = z.ToString();
+                // long currStep = currNumber.ToString().Length;
+                // currLength += currStep;
+                currString += currNumber;
+                z++;
+                // Console.WriteLine($"input n:{n} \ncurrent n: {currString.Length} \n");
+                // if (currLength > n) running = false;
+            }
+            // Console.WriteLine(currString);
+            char x = currString[(int)n - 1];
+            // Console.WriteLine($"char {x}");
+            string y = x.ToString();
+            int.TryParse(y, out int result);
+            //  Console.WriteLine("Done");
+
             return result;
         }
 
@@ -1478,10 +1574,10 @@ namespace ExercisesAndAnswers._4Kyu
 
             double R1 = fieldDiameter / 2.0;
             double maxFeedingArea = (Math.PI * Math.Pow(R1, 2)) * eatenRatio;
-            
-            int upperBound = fieldDiameter;            
+
+            int upperBound = fieldDiameter;
             int lowerBound = 1;
-            int halfWay = lowerBound + (upperBound - lowerBound) /2;
+            int halfWay = lowerBound + (upperBound - lowerBound) / 2;
 
             while (upperBound - lowerBound > 1)
             {
@@ -1489,19 +1585,19 @@ namespace ExercisesAndAnswers._4Kyu
                 {
                     upperBound = halfWay;
                     halfWay = lowerBound + (upperBound - lowerBound) / 2;
-                }                
+                }
                 else
                 {
                     lowerBound = halfWay;
                     halfWay = lowerBound + (upperBound - lowerBound) / 2;
-                }                            
+                }
 
             }
-            
+
             return lowerBound;
 
         }
-        
+
         static double calculateTheField(double R1, double R2)
         {
             double alpha, beta, a1, a2;

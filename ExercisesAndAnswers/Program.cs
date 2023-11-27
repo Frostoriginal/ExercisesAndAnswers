@@ -51,35 +51,27 @@ public class Program
             // fibonacci = Memoizer.Memoize((int n1) => Fibonacci(n1, fibonacci));
             //Console.WriteLine($"{fibonacci(10)}");
 
-            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(200, 0.5));
-
-            //Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(200, 0.5));
-            Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(1240282897, 0.5066740381908333));
-           
-            //Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLengthDec(1277841897, 0.566217129));
-                                                                                     //1.7976931348623157
-            // Console.WriteLine(ExercisesAndAnswers._4Kyu.Kata.GetRopeLength(26053, 0.5706236655715278));
-            // ExercisesAndAnswers._4Kyu.Kata.solve(123456789);
-
-            ///Block sequences brute force
-
-            /*
-            //  string currString = "";
-
-            string currNumber = "";
-            long currLength = 0;
-            for (long i = 1; i < 30; i++)
+            for (int i = 1; i < 10000; i++)
             {
-                currNumber += i.ToString();
-                long currStep = currNumber.ToString().Length;
-                currLength += currStep;
-               // currString += currNumber;
-                Console.WriteLine($"current n: {currLength} current step: {currStep} current i {i}");
+                if (ExercisesAndAnswers._4Kyu.Kata.solve(i) != ExercisesAndAnswers._4Kyu.Kata.solve2(i))
+                {
+                    Console.WriteLine($"Problem number:{i}");
+                }
 
-            }
+            }           
+            
 
-            if(currLength>1000000000000000000) Console.WriteLine("maxed out");
-            */
+            //if (ExercisesAndAnswers._4Kyu.Kata.solve(x) == ExercisesAndAnswers._4Kyu.Kata.solve(x))
+            //{
+            //    Console.WriteLine(true);
+            //}
+            //else { Console.WriteLine(false); }
+
+            //Console.WriteLine($"Answer: {ExercisesAndAnswers._4Kyu.Kata.solve(x)}");
+
+           // Console.WriteLine($"BruteForce: {ExercisesAndAnswers._4Kyu.Kata.solve2(x)}");
+
+            
 
 
 

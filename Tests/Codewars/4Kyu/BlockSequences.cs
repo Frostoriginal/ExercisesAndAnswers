@@ -71,7 +71,7 @@ namespace Tests.Codewars._4Kyu
             Assert.True(ExercisesAndAnswers._4Kyu.Kata.solve(n) == expected);
         }
 
-        /*
+        
         [Fact]
         public void Test8()
         {
@@ -89,7 +89,7 @@ namespace Tests.Codewars._4Kyu
         }
 
         [Fact]
-        public void Test9()
+        public void Test10()
         {
             long n = 1000000000000000000;
             int expected = 1;
@@ -97,7 +97,7 @@ namespace Tests.Codewars._4Kyu
         }
 
           [Fact]
-        public void Test10()
+        public void Test11()
         {
             long n = 999999999999999993;
             int expected = 7;
@@ -106,7 +106,7 @@ namespace Tests.Codewars._4Kyu
 
 
 
-        */
+        
 
 
 

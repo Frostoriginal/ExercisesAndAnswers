@@ -1,7 +1,7 @@
 
 4 Kyu:
 - Block sequence
-- Grazing donkey
+
 - Total area covered by rectangles
 - Path Finder #2: shortest path
 
