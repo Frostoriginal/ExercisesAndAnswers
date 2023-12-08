@@ -67,15 +67,20 @@ public class Program
             //}
             //else { Console.WriteLine(false); }
 
-            long x = 999999999999999993;
-            Console.WriteLine($"Answer: {ExercisesAndAnswers._4Kyu.Kata.solve(x)}");
-            
+            //long x = 999999999999999993;
+            //Console.WriteLine($"Answer: {ExercisesAndAnswers._4Kyu.Kata.solve(x)}");
+
 
             // Console.WriteLine($"BruteForce: {ExercisesAndAnswers._4Kyu.Kata.solve2(x)}");
 
 
 
+            int[] nums = { 2, 7, 11, 15 };
+            int target = 9;
+            int[] expected = { 0, 1 };
+            int[] result = Blind75.Blind_Array.TwoSum(nums,target);
 
+            int a = 0;
 
 
             //List<int[]> rectangles = new();
