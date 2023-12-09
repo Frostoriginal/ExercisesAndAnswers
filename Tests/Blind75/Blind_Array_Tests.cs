@@ -114,5 +114,119 @@ namespace Tests.Blind75
 
         }
         #endregion
+
+        #region ProductExeptSelf
+        [Fact]
+        public void ProductExeptSelfTest0()
+        {
+            int[] nums = { 1, 2, 3, 4 };
+            int[] output = { 24,12,8,6};
+
+            Assert.Equal(output, ExercisesAndAnswers.Blind75.Blind_Array.ProductExceptSelf3(nums));
+
+        }
+
+        [Fact]
+        public void ProductExeptSelfTest1()
+        {
+            int[] nums = { -1, 1, 0, -3, 3 };
+            int[] output = {0,0,9,0,0};
+
+            Assert.Equal(output, ExercisesAndAnswers.Blind75.Blind_Array.ProductExceptSelf3(nums));
+
+        }
+
+        [Fact]
+        public void ProductExeptSelfTest2()
+        {
+            int[] nums = { 2, 3, 5, 0 };
+            int[] output = { 0, 0, 0, 30 };
+
+            Assert.Equal(output, ExercisesAndAnswers.Blind75.Blind_Array.ProductExceptSelf3(nums));
+
+        }
+        #endregion
+
+        #region MaxSubArray
+        [Fact]
+        public void MaxSubArrayTest0()
+        {
+            int[] nums = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+            int output = 6;
+
+            Assert.Equal(output, ExercisesAndAnswers.Blind75.Blind_Array.MaxSubArray(nums));
+
+        }
+
+        [Fact]
+        public void MaxSubArrayTest1()
+        {
+            int[] nums = { 1 };
+            int output = 1;
+
+            Assert.Equal(output, ExercisesAndAnswers.Blind75.Blind_Array.MaxSubArray(nums));
+
+        }
+
+        [Fact]
+        public void MaxSubArrayTest2()
+        {
+            int[] nums = { 5, 4, -1, 7, 8 };
+            int output = 23;
+
+            Assert.Equal(output, ExercisesAndAnswers.Blind75.Blind_Array.MaxSubArray(nums));
+
+        }
+
+
+
+        #endregion
+
+        #region MaxProduct
+        [Fact]
+        public void MaxProductTest0()
+        {
+            int[] nums = { 2, 3, -2, 4 };
+            int output = 6;
+
+            Assert.Equal(output, ExercisesAndAnswers.Blind75.Blind_Array.MaxProduct(nums));
+
+        }
+
+        [Fact]
+        public void MaxProductTest1()
+        {
+            int[] nums = { -2, 0, -1 };
+            int output = 0;
+
+            Assert.Equal(output, ExercisesAndAnswers.Blind75.Blind_Array.MaxProduct(nums));
+
+        }
+
+        [Fact]
+        public void MaxProductTest2()
+        {
+            int[] nums = { -2, 3, -4 };
+            int output = 24;
+
+            Assert.Equal(output, ExercisesAndAnswers.Blind75.Blind_Array.MaxProduct(nums));
+
+        }
+
+        [Fact]
+        public void MaxProductTest3()
+        {
+            int[] nums = { 2, -5, -2, -4, 3 };
+            int output = 24;
+
+            Assert.Equal(output, ExercisesAndAnswers.Blind75.Blind_Array.MaxProduct(nums));
+
+        }
+
+
+
+
+
+        #endregion
     }
 }

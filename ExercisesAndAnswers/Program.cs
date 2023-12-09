@@ -75,10 +75,8 @@ public class Program
 
 
 
-            int[] nums = { 2, 7, 11, 15 };
-            int target = 9;
-            int[] expected = { 0, 1 };
-            int[] result = Blind75.Blind_Array.TwoSum(nums,target);
+            int[] nums = { 1, 2, 3, 4 };
+            Blind75.Blind_Array.ProductExceptSelf3(nums);
 
             int a = 0;
 
