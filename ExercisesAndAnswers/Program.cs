@@ -75,8 +75,11 @@ public class Program
 
 
 
-            int[] nums = { 1, 2, 3, 4 };
-            Blind75.Blind_Array.ProductExceptSelf3(nums);
+            //int[] nums = { 1, 2, 3, 4 };
+            //Blind75.Blind_Array.ProductExceptSelf3(nums);
+
+            int[] nums = { -1, 0, 1, 2, -1, -4 };
+            var x =   Blind75.Blind_Array.ThreeSum(nums);
 
             int a = 0;
 

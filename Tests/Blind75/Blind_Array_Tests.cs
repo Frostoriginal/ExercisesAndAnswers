@@ -223,6 +223,30 @@ namespace Tests.Blind75
 
         }
 
+        [Fact]
+        public void ContainterWithMostWaterTest1()
+        {
+            int[] nums = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+            int output = 49;
+
+            Assert.Equal(output, ExercisesAndAnswers.Blind75.Blind_Array.MaxArea(nums));
+
+        }
+
+        [Fact]
+        public void ContainterWithMostWaterTest2()
+        {
+            int[] nums = { 1, 1 };
+            int output = 1;
+
+            Assert.Equal(output, ExercisesAndAnswers.Blind75.Blind_Array.MaxArea(nums));
+
+        }
+
+        
+
+
+
 
 
 

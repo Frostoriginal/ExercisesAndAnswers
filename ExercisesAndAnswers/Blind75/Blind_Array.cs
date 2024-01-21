@@ -230,5 +230,97 @@ namespace ExercisesAndAnswers.Blind75
 
         #endregion
 
+        #region Container With Most Water //Time limit exceeded
+        // https://leetcode.com/problems/container-with-most-water/description/
+        public static int MaxAreaBrute(int[] height)
+        {
+            int maxArea = 0;
+            for (int i = 0; i < height.Length-1; i++)
+            {
+                for (int j = i+1; j < height.Length; j++)
+                {
+                    int boxHeight = height[i] < height[j] ? height[i] : height[j];
+                    int boxWidth = j - i;                  
+                    int currentArea = boxWidth * boxHeight;
+                    if(currentArea>maxArea) maxArea = currentArea;
+                    Console.WriteLine($"Current i:{i}, current j: {j} current h:{boxHeight} current w:{boxWidth} current maxArea: {maxArea}");
+                }
+            }
+            return maxArea;
+        }
+
+        public static int MaxArea(int[] height)
+        {
+            int i = 0;
+            int j = height.Length-1;
+            int maxArea = 0;
+
+            while (i!=j)
+            {
+                int boxHeight = height[i] < height[j] ? height[i] : height[j];
+                int boxWidth = j - i;
+                int currentArea = boxWidth * boxHeight;
+                if (currentArea > maxArea) maxArea = currentArea;
+                if (height[i] <= height[j]) i++;
+                else j--;                
+            }
+            return maxArea;
+        }
+
+        #endregion
+
+        #region 3 sum //unfinished!
+        //https://leetcode.com/problems/3sum/description/
+        public static IList<IList<int>> ThreeSum(int[] nums)
+        {
+            List<List<int>> result = new();
+            List<int[]> arrayResult = new();
+           
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int a = nums[i];
+                //twosumFunc
+                for (int j = i+1; j < nums.Length; j++)
+                {
+                    int b = nums[j];
+                    for (int k = j+1; k < nums.Length; k++)
+                    {
+                        int c = nums[k];
+                        if (b + nums[k] == -a)
+                        {
+                            List<int> matchingNumber  = new() { a, b, nums[k] };
+
+                            matchingNumber.Sort();
+                            
+                            result.Add(matchingNumber);
+                          
+                        }
+                        Console.WriteLine($"a:{a}, b:{b}, c:{c}");
+                    }
+
+                }
+
+            }
+            
+
+            List<List<int>> result2 = result.Distinct().ToList();
+            
+
+
+            foreach (List<int> list in result2)
+            {
+                Console.WriteLine($"{list[0]},{list[1]},{list[2]}");
+            }
+
+            
+
+            return result.Distinct() as IList<IList<int>>;
+
+        }
+
+
+        #endregion
+
     }
 }
